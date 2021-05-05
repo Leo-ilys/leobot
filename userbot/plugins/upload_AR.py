@@ -147,27 +147,27 @@ async def uploadir(event):
     if not os.path.exists(path):
         await edit_or_reply(
             event,
-            f"`there is no such directory/file with the name {path} to upload`",
+            f"`⌁ لايـوجد مثـل هذا الدلـيل فـي المـلف {path} للـتحميـل`",
         )
         return
-    udir_event = await edit_or_reply(event, "Uploading....")
+    udir_event = await edit_or_reply(event, "⌁ جـاري التـحمـيل....")
     if os.path.isdir(path):
-        await edit_or_reply(udir_event, f"`Gathering file details in directory {path}`")
+        await edit_or_reply(udir_event, f"`⌁ جمع تفاصيل الملف في الدليل {path}`")
         UPLOAD_.uploaded = 0
         await upload(path, event, udir_event)
         end = datetime.now()
         ms = (end - start).seconds
         await udir_event.edit(
-            f"`Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds. `"
+            f"`تـم الـرفع {UPLOAD_.uploaded} المـلفـات بنـجاح فـي {ms} ثـوانـي ⌁. `"
         )
     else:
-        await edit_or_reply(udir_event, f"`Uploading.....`")
+        await edit_or_reply(udir_event, f"`⌁ تـحمـيل...`")
         UPLOAD_.uploaded = 0
         await upload(path, event, udir_event)
         end = datetime.now()
         ms = (end - start).seconds
         await udir_event.edit(
-            f"`Uploaded file {str(path)} successfully in {ms} seconds. `"
+            f"`الـملـف محـمل {str(path)} بـنجـاح فـي {ms} ثـواني ⌁. `"
         )
     await asyncio.sleep(5)
     await udir_event.delete()
@@ -182,10 +182,10 @@ async def uploadir(event):
     if not os.path.exists(path):
         await edit_or_reply(
             event,
-            f"`there is no such directory/file with the name {path} to upload`",
+            f"`⌁ لايـوجد مثـل هذا الدلـيل فـي المـلف {path} للـتحميـل`",
         )
         return
-    udir_event = await edit_or_reply(event, "Uploading....")
+    udir_event = await edit_or_reply(event, "⌁ جـاري التـحمـيل..")
     if os.path.isdir(path):
         await edit_or_reply(udir_event, f"`Gathering file details in directory {path}`")
         UPLOAD_.uploaded = 0
@@ -193,16 +193,16 @@ async def uploadir(event):
         end = datetime.now()
         ms = (end - start).seconds
         await udir_event.edit(
-            f"`Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds. `"
+            f"`تـم الـرفع {UPLOAD_.uploaded} المـلفات بنـجاح فـي {ms} ثـوانـي ⌁. `"
         )
     else:
-        await edit_or_reply(udir_event, f"`Uploading.....`")
+        await edit_or_reply(udir_event, f"`جـاري الـتحمـيل ⌁..`")
         UPLOAD_.uploaded = 0
         await upload(path, event, udir_event, catflag=True)
         end = datetime.now()
         ms = (end - start).seconds
         await udir_event.edit(
-            f"`Uploaded file {str(path)} successfully in {ms} seconds. `"
+            f"`مـلف مـحمـل {str(path)} بنـجاح فـي {ms} ثـواني ⌁. `"
         )
     await asyncio.sleep(5)
     await udir_event.delete()
@@ -318,7 +318,7 @@ async def video_catfile(event):
 
 CMD_HELP.update(
     {
-        "upload": "**Plugin :** `upload`\
+        "الرفع": "**Plugin :** `الرفع`\
     \n\n  •  **Syntax :** `.upload path of file/folder`\
     \n  •  **Function : **__Uploads the file from the server or list of files from that folder as steamable__\
     \n\n  •  **Syntax :** `.uploadf path of file/folder`\
