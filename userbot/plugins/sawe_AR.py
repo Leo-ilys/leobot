@@ -77,8 +77,8 @@ async def _(event):
         update_previous_welcome(event.chat_id, current_message.id)
 
 
-@bot.on(admin_cmd(pattern=r"savewelcome ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"savewelcome ?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"sawe ?(.*)"))
+@bot.on(sudo_cmd(pattern=r"sawe ?(.*)", allow_sudo=True))
 async def save_welcome(event):
     if event.fwd_from:
         return
@@ -100,13 +100,13 @@ async def save_welcome(event):
         else:
             await edit_or_reply(
                 event,
-                "`Saving media as part of the welcome note requires the BOTLOG_CHATID to be set.`",
+                "`- يتطلب حفظ الوسائط ڪجࢪ࣪۽ من ملاحظۿ التࢪحيب تعيين BOTLOG_CHATID .`",
             )
             return
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "`Welcome note {} for this chat.`"
+    success = "- تـم حفـض تࢪحيبڪ بنـجاح ."
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
         return await edit_or_reply(event, success.format("saved"))
     rm_welcome_setting(event.chat_id)
@@ -115,35 +115,35 @@ async def save_welcome(event):
     await edit_or_reply("Error while setting welcome in this group")
 
 
-@bot.on(admin_cmd(pattern="clearwelcome$"))
-@bot.on(sudo_cmd(pattern="clearwelcome$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="clwe$"))
+@bot.on(sudo_cmd(pattern="clwe$", allow_sudo=True))
 async def del_welcome(event):
     if event.fwd_from:
         return
     if rm_welcome_setting(event.chat_id) is True:
-        await edit_or_reply(event, "`Welcome note deleted for this chat.`")
+        await edit_or_reply(event, "- تـم مـسح تࢪحيبڪ بنـجاح .")
     else:
-        await edit_or_reply(event, "`Do I have a welcome note here ?`")
+        await edit_or_reply(event, "- لايـوجد ࢦـديڪ هـنا تࢪحيب .")
 
 
-@bot.on(admin_cmd(pattern="listwelcome$"))
-@bot.on(sudo_cmd(pattern="listwelcome$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="listsawe$"))
+@bot.on(sudo_cmd(pattern="listsawe$", allow_sudo=True))
 async def show_welcome(event):
     if event.fwd_from:
         return
     cws = get_current_welcome_settings(event.chat_id)
     if not cws:
-        await edit_or_reply(event, "`No welcome message saved here.`")
+        await edit_or_reply(event, "`- لايـوجد ࢦـديڪ هـنا تࢪحيب .`")
         return
     if cws.f_mesg_id:
         msg_o = await bot.get_messages(entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id))
         await edit_or_reply(
-            event, "`I am currently welcoming new users with this welcome note.`"
+            event, "`- أࢪحب حالياً بالمستخدمين الجدد بهذۿ الملاحظۿ التࢪحيبيۿ .`"
         )
         await event.reply(msg_o.message, file=msg_o.media)
     elif cws.reply:
         await edit_or_reply(
-            event, "`I am currently welcoming new users with this welcome note.`"
+            event, "`- أࢪحب حالياً بالمستخدمين الجدد بهذۿ الملاحظۿ التࢪحيبيۿ .`"
         )
         await event.reply(cws.reply)
 
@@ -151,13 +151,13 @@ async def show_welcome(event):
 CMD_HELP.update(
     {
         "welcome": "**Plugin :** `welcome`\
-\n\n  •  **Syntax :** `.savewelcome` <welcome message> or reply to a message with .savewelcome\
+\n\n  •  **Syntax :** `.sawe` <welcome message> or reply to a message with .savewelcome\
 \n  •  **Function :** Saves the message as a welcome note in the chat.\
 \n\n  •  Available variables for formatting welcome messages :\
 \n`{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`\
-\n\n  •  **Syntax :** `.listwelcome`\
+\n\n  •  **Syntax :** `.listsawe`\
 \n  •  **Function :** Check whether you have a welcome note in the chat.\
-\n\n  •  **Syntax :** `.clearwelcome`\
+\n\n  •  **Syntax :** `.clwe`\
 \n  •  **Function :** Deletes the welcome note for the current chat.\
 "
     }
