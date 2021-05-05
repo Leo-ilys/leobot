@@ -1,7 +1,7 @@
 """Get Telegram Profile Picture and other information
 and set as own profile.
 Syntax: .clone @username"""
-# Credits of Plugin @ViperAdnan and @mrconfused(revert)[will add sql soon]
+# Credits of Plugin @Jmthon
 
 import html
 
@@ -15,7 +15,7 @@ DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
 DEFAULTUSERBIO = (
     str(DEFAULT_BIO)
     if DEFAULT_BIO
-    else "sıɥʇ ǝpoɔǝp uǝɥʇ llıʇu∩ ˙ ǝɔɐds ǝʇɐʌıɹd ǝɯos ǝɯ ǝʌı⅁˙"
+    else "@Jmthon˙"
 )
 
 
@@ -58,7 +58,7 @@ async def _(event):
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
     await event.delete()
     await event.client.send_message(
-        event.chat_id, "**LET US BE AS ONE**", reply_to=reply_message
+        event.chat_id, "**- تـم انتـحال الضـحيۿ **", reply_to=reply_message
     )
     if BOTLOG:
         await event.client.send_message(
@@ -83,7 +83,7 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(about=bio))
     await event.client(functions.account.UpdateProfileRequest(first_name=name))
     await event.client(functions.account.UpdateProfileRequest(last_name=blank))
-    await event.edit("succesfully reverted to your account back")
+    await event.edit(" - تم اعادۿ ضبط حسـابڪ بنجـاحہ‌َ .")
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID, f"#REVERT\nSuccesfully reverted back to your profile"
@@ -142,7 +142,7 @@ async def get_full_user(event):
 
 CMD_HELP.update(
     {
-        "clone": "**Plugin : **`clone`\
+        "الانتحال": "**Plugin : **`انتحال`\
         \n\n  •  **Syntax :** `.clone`<reply to user whom you want to clone\
         \n  •  **Function : **clone the replied user account\
         \n\n  •  **Syntax : **`.revert`\
