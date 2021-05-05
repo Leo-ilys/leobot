@@ -1,11 +1,5 @@
-"""
-Created by @Jisan7509
-modified by  @mrconfused
-Userbot plugin for CatUserbot
-"""
-import emoji
-
-from . import fonts as emojify
+from telethon import events
+import asyncio
 
 
 @bot.on(admin_cmd(pattern="emoji(?: |$)(.*)"))
@@ -31,7 +25,7 @@ async def itachi(event):
     await edit_or_reply(event, result)
 
 
-@bot.on(admin_cmd(pattern="cmoji(?: |$)(.*)"))
+@bot.on(admin_cmd(pattern="armoji(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="cmoji(?: |$)(.*)", allow_sudo=True))
 async def itachi(event):
     args = event.pattern_match.group(1)
@@ -47,10 +41,10 @@ async def itachi(event):
         emoji, arg = args.split(" ", 1)
     except Exception:
         arg = args
-        emoji = "😺"
+        emoji = "⌁"
     if not char_is_emoji(emoji):
         arg = args
-        emoji = "😺"
+        emoji = "⌁"
     result = ""
     for a in arg:
         a = a.lower()
