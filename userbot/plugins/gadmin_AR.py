@@ -1,5 +1,5 @@
 """
-credits to @mrconfused
+credits to @Jmthon
 dont edit credits
 """
 #  Copyright (C) 2020  sandeep.n(π.$)
@@ -48,16 +48,16 @@ UNBAN_RIGHTS = ChatBannedRights(
 async def catgban(event):
     if event.fwd_from:
         return
-    cate = await edit_or_reply(event, "`gbanning.......`")
+    cate = await edit_or_reply(event, "`يـتم الحظر`")
     start = datetime.now()
     user, reason = await get_user_from_event(event, cate)
     if not user:
         return
     if user.id == (await event.client.get_me()).id:
-        await cate.edit("why would I ban myself")
+        await cate.edit("لماذا تريد ان اقوم بحظر نفسي")
         return
     if user.id in CAT_ID:
-        await cate.edit("why would I ban my dev")
+        await cate.edit("لماذا تريد ان تقوم بحظر مطوري")
         return
     try:
         hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -66,7 +66,7 @@ async def catgban(event):
         pass
     if gban_sql.is_gbanned(user.id):
         await cate.edit(
-            f"`the `[user](tg://user?id={user.id})` is already in gbanned list any way checking again`"
+            f"`the `[user](tg://user?id={user.id})` تـم بالتاكيد حظره`"
         )
     else:
         gban_sql.catgban(user.id, reason)
@@ -75,7 +75,7 @@ async def catgban(event):
     count = 0
     sandy = len(san)
     if sandy == 0:
-        await cate.edit("`you are not admin of atleast one group` ")
+        await cate.edit("`انـت است مشرف في الـمجموعه ")
         return
     await cate.edit(
         f"`initiating gban of the `[user](tg://user?id={user.id}) `in {len(san)} groups`"
@@ -88,17 +88,17 @@ async def catgban(event):
         except BadRequestError:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"`You don't have required permission in :`\n**Chat :** {event.chat.title}(`{event.chat_id}`)\n`For banning here`",
+                f"`لـيس لديك صلاحيات الحظر في  :`\n**الدردشه :** {event.chat.title}(`{event.chat_id}`)\n`لتـقوم بالحظر`",
             )
     end = datetime.now()
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {cattaken} seconds`!!\n**Reason :** `{reason}`"
+            f"[{user.first_name}](tg://user?id={user.id}) `تم حظره في  {count} من المجموعات في {cattaken} ثانيه`!!\n**بـسبب :** `{reason}`"
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was gbanned in {count} groups in {cattaken} seconds`!!"
+            f"[{user.first_name}](tg://user?id={user.id}) `تم حظره في  {count} من المجموعات في {cattaken} ثانيه`!!"
         )
 
     if BOTLOG and count != 0:
@@ -137,7 +137,7 @@ async def catgban(event):
 async def catgban(event):
     if event.fwd_from:
         return
-    cate = await edit_or_reply(event, "`ungbanning.....`")
+    cate = await edit_or_reply(event, "` يتم الـغاء الحظر العام`")
     start = datetime.now()
     user, reason = await get_user_from_event(event, cate)
     if not user:
