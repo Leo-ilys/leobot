@@ -1,6 +1,4 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
 from telethon.tl.functions.messages import SaveDraftRequest
 
 
@@ -9,7 +7,7 @@ from telethon.tl.functions.messages import SaveDraftRequest
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("Counting...")
+    await event.edit("جـاري كشـف معلومـات الـرسالة ...")
     count = -1
     message = event.message
     while message:
@@ -22,12 +20,12 @@ async def _(event):
             )
         message = reply
         count += 1
-    await event.edit(f"Chain length: {count}")
+    await event.edit(f" المـعلومـات هـي : {count} ")
 
 
 CMD_HELP.update(
     {
-        "chain": """**Plugin :**`chain`
+        " كـشف رسالة": """**Plugin :**`كـشف رسالة`
         
   • **Syntax : **`.chain reply to message`
   • **Function : **__Reply this command to any converstion(or message) so that it finds chain length of that message__"""
