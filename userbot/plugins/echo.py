@@ -1,6 +1,6 @@
 """
-created by @mrconfused and @sandy1709
-Idea by @BlazingRobonix
+created by @RRRD7 and @Jmthon
+Idea by @RRRD7
 
 """
 
@@ -30,12 +30,12 @@ async def echo(cat):
         except BaseException:
             pass
         if is_echo(user_id, chat_id):
-            await edit_or_reply(cat, "The user is already enabled with echo ")
+            await edit_or_reply(cat, " تـم تفـعيل وضـع الازعاج على الشخص")
             return
         addecho(user_id, chat_id)
         await edit_or_reply(cat, "Hi")
     else:
-        await edit_or_reply(cat, "Reply to a User's message to echo his messages")
+        await edit_or_reply(cat, " الرد على الشخص الذي تـريد ازعاجه")
 
 
 @bot.on(admin_cmd(pattern="rmecho$"))
@@ -55,11 +55,11 @@ async def echo(cat):
             pass
         if is_echo(user_id, chat_id):
             remove_echo(user_id, chat_id)
-            await edit_or_reply(cat, "Echo has been stopped for the user")
+            await edit_or_reply(cat, " تـم ايـقاف الازعـاج")
         else:
-            await edit_or_reply(cat, "The user is not activated with echo")
+            await edit_or_reply(cat, " لـم يتـم تشغـيل الازعـاج علـى هذا الشـخص")
     else:
-        await edit_or_reply(cat, "Reply to a User's message to echo his messages")
+        await edit_or_reply(cat, " الرد علـى الشخص رجـاء")
 
 
 @bot.on(admin_cmd(pattern="listecho$"))
@@ -75,7 +75,7 @@ async def echo(cat):
                 f"[User](tg://user?id={echos.user_id}) in chat `{echos.chat_id}`\n"
             )
     else:
-        output_str = "No echo enabled users "
+        output_str = "لايـوجد لسـتة وضـع ازعـاج هنـا "
     if len(output_str) > Config.MAX_MESSAGE_SIZE_LIMIT:
         key = (
             requests.post(
