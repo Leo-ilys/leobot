@@ -23,11 +23,11 @@ async def amireallyalive(alive):
         cat_caption = f"**{CUSTOM_ALIVE_TEXT}**\n\n"
         cat_caption += f"**{EMOJI} قاعدة البيانات :** `{check_sgnirts}`\n"
         cat_caption += f"**{EMOJI} نسخة تليثون :** `{version.__version__}\n`"
-        cat_caption += f"**{EMOJI} نسخه جم ثون:** `{catversion}`\n"
+        cat_caption += f"**{EMOJI} نسخه جمثون:** `{catversion}`\n"
         cat_caption += f"**{EMOJI} نسخة البايثون :** `{python_version()}\n`"
         cat_caption += f"**{EMOJI} الوقت :** `{uptime}\n`"
         cat_caption += f"**{EMOJI} المنشئ:** {mention}\n"
-        cat_caption += f"**{EMOJI}**  **[𝗦𝗼𝘂𝗿𝗰𝗲 𝗖𝗵𝗮𝗻𝗻𝗲𝗹]**(t.me/jmthon)  𖠕 .\n"
+        cat_caption += f"**{EMOJI}**  **[𝗦𝗼𝘂𝗿𝗰𝗲 𝗖𝗵𝗮𝗻𝗻𝗲𝗹]**(t.me/jmthon)   .\n"
         await alive.client.send_file(
             alive.chat_id, CAT_IMG, caption=cat_caption, reply_to=reply_to_id
         )
