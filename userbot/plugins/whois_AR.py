@@ -1,4 +1,4 @@
-# whois code for @iqthon
+# whois code for @Jmthon
 
 import os
 
@@ -13,7 +13,7 @@ TMP_DOWNLOAD_DIRECTORY = Config.TMP_DOWNLOAD_DIRECTORY
 @bot.on(admin_cmd(pattern="who(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="who(?: |$)(.*)", allow_sudo=True))
 async def who(event):
-    cat = await edit_or_reply(event, "𖠕")
+    cat = await edit_or_reply(event, "⌁")
     if not os.path.isdir(TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TMP_DOWNLOAD_DIRECTORY)
     replied_user = await get_user(event)
@@ -107,15 +107,15 @@ async def fetch_info(replied_user, event):
     last_name = last_name.replace("\u2060", "") if last_name else (" ")
     username = "@{}".format(username) if username else ("لايوجد معرف")
     user_bio = "لاتوجد نبذه" if not user_bio else user_bio
-    caption = "<b><i> 𓆩 𝗌𝗈𝗎𝗋𝖼𝖾 𝗍𝖾𝗅𝖾𝗍𝗁𝗈𝗇-JMTHON - 𝗉𝗋𝗈 𝖽𝖺𝗍𝖺 𓆪 </i></b>\n"
-    caption += f"<b> • ⚜️ | f𝗂𝗋𝗌𝗍 𝗇𝖺𝗆𝖾 ↬</b> {first_name} {last_name}\n"
-    caption += f"<b> • ⚜️ | 𝗎𝗌𝗋 ↬</b> {username}\n"
-    caption += f"<b> • ⚜️ | 𝗂𝖽 ↬</b> <code>{user_id}</code>\n"
-    caption += f"<b> • ⚜️ | 𝗇𝗎𝗆𝖻𝖾𝗋 𝗈f 𝗉𝗁𝗈𝗍𝗈𝗌 ↬</b> {replied_user_profile_photos_count}\n"
-    caption += f"<b> • ⚜️ | 𝖻𝗂𝗈⁦ ↬ </b> {user_bio} \n"
-    caption += f"<b> • ⚜️ | 𝗍𝗁𝖾 𝗅𝗂𝗇𝗄 ↬</b> \n"
+    caption = "<b><i> 𓆩JMTHON SOURCE 𓆪 </i></b>\n"
+    caption += f"<b> • 🇮🇶 | الأسم ↬</b> {first_name} {last_name}\n"
+    caption += f"<b> • 🇮🇶 | الـمعرف ↬</b> {username}\n"
+    caption += f"<b> • 🇮🇶 | الايدي ↬</b> <code>{user_id}</code>\n"
+    caption += f"<b> • 🇮🇶 | عـدد الصور ↬</b> {replied_user_profile_photos_count}\n"
+    caption += f"<b> • 🇮🇶 | النبـذة ↬ </b> {user_bio} \n"
+    caption += f"<b> • 🇮🇶 | حـسابه ↬</b> \n"
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a> \n'
-    caption += f"<b> 𓆩 𝗍𝖾𝗅𝖾𝗍𝗁𝗈𝗇-JMTHON </b> - @jmthon 𓆪 "
+    caption += f"<b> 𓆩 𝗍𝖾𝗅𝖾𝗍𝗁𝗈𝗇-𝖺𝗋𝖺𝖻𝗌 </b> - @JMTHON 𓆪 "
     return photo, caption
 
 
