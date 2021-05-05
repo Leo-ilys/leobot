@@ -8,7 +8,7 @@ from . import ALIVE_NAME, StartTime, catversion, get_readable_time, mention, rep
 DEFAULTUSER = ALIVE_NAME or "𝗝𝗠𝗧𝗛𝗢𝗡♡⁩"
 CAT_IMG = Config.ALIVE_PIC or "https://telegra.ph/file/13daa3f45ca839a2cf388.jpg"
 CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "⇝ 𝗪َ𝗘𝗟َِ𝗖𝗢𝗠َِ𝙀َِ 𝗧𝗢 𝗝𝗠𝗧𝗛𝗢𝗡 𝄵 ⇜"
-EMOJI = Config.CUSTOM_ALIVE_EMOJI or "༈"
+EMOJI = Config.CUSTOM_ALIVE_EMOJI or "-"
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="alive$"))
@@ -21,10 +21,10 @@ async def amireallyalive(alive):
     _, check_sgnirts = check_data_base_heal_th()
     if CAT_IMG:
         cat_caption = f"**{CUSTOM_ALIVE_TEXT}**\n\n"
-        cat_caption += f"**{EMOJI} قاعدة البيانات :** `{check_sgnirts}`\n"
-        cat_caption += f"**{EMOJI} نسخة تليثون :** `{version.__version__}\n`"
-        cat_caption += f"**{EMOJI} نسخه جمثون:** `{catversion}`\n"
-        cat_caption += f"**{EMOJI} نسخة البايثون :** `{python_version()}\n`"
+        cat_caption += f"**{EMOJI} قاعدۿ البيانات :** `{check_sgnirts}`\n"
+        cat_caption += f"**{EMOJI} نسخۿ تليثون :** `{version.__version__}\n`"
+        cat_caption += f"**{EMOJI} نسخـۿ جـمثون:** `{catversion}`\n"
+        cat_caption += f"**{EMOJI} نسخـۿ البايثون :** `{python_version()}\n`"
         cat_caption += f"**{EMOJI} الوقت :** `{uptime}\n`"
         cat_caption += f"**{EMOJI} المنشئ:** {mention}\n"
         cat_caption += f"**{EMOJI}**  **[𝗦𝗼𝘂𝗿𝗰𝗲 𝗖𝗵𝗮𝗻𝗻𝗲𝗹]**(t.me/jmthon)   .\n"
@@ -39,7 +39,7 @@ async def amireallyalive(alive):
         f"**{CUSTOM_ALIVE_TEXT}**\n"
         f"**{EMOJI} قاعدة البيانات 『** `1.0.0`』\n"
         f"**{EMOJI} اصدار الـتليثون  『** `1.0.0`』\n`"
-        f"**{EMOJI} اصدار مـاتريكس  『 `1.0.0`』**\n`"
+        f"**{EMOJI} اصدار جـمثون  『 `1.0.0`』**\n`"
         f"**{EMOJI} اصدار البـايثون  『 `1.0.0`』**\n`"
         f"**{EMOJI} مدة التشغيل 『** `{uptime}』\n`"
         f"**{EMOJI} المستخدم 『** {mention}』\n"
