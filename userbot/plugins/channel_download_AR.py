@@ -2,7 +2,7 @@
 Telegram Channel Media Downloader Plugin for userbot.
 usage: .geta channel_username [will  get all media from channel, tho there is limit of 3000 there to prevent API limits.]
        .getc number_of_messsages channel_username
-By: @Zero_cool7870
+By: @Jmthon
 """
 import os
 import subprocess
@@ -23,7 +23,7 @@ async def get_media(event):
     catty = event.pattern_match.group(1)
     limit = int(catty.split(" ")[0])
     channel_username = str(catty.split(" ")[1])
-    event = await edit_or_reply(event, "Downloading Media From this Channel.")
+    event = await edit_or_reply(event, "تحميل الوسائط من هذه القناة ⌁.")
     msgs = await event.client.get_messages(channel_username, limit=int(limit))
     with open("log.txt", "w") as f:
         f.write(str(msgs))
@@ -33,7 +33,7 @@ async def get_media(event):
             await event.client.download_media(msg, tempdir)
             i += 1
             await event.edit(
-                f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`"
+                f"جـاري تحمـيل الوسائـط من القناة.\n **التنـزيلات : **`{i}`"
             )
     ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
     output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
@@ -41,7 +41,7 @@ async def get_media(event):
     output = str(output)
     output = output.replace("b'", " ")
     output = output.replace("\\n'", " ")
-    await event.edit(f"Successfully downloaded {output} number of media files")
+    await event.edit(f"تم التنزيل بنجاح ⌁ {output} عدد ملفات الوسائط ⌁")
 
 
 @bot.on(admin_cmd(pattern="geta(?: |$)(.*)"))
@@ -55,7 +55,7 @@ async def get_media(event):
     except BaseException:
         pass
     channel_username = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "Downloading All Media From this Channel.")
+    event = await edit_or_reply(event, "تنزيل كافة الوسائط من هذه القناة ⌁.")
     msgs = await event.client.get_messages(channel_username, limit=3000)
     with open("log.txt", "w") as f:
         f.write(str(msgs))
@@ -65,7 +65,7 @@ async def get_media(event):
             await event.client.download_media(msg, tempdir)
             i += 1
             await event.edit(
-                f"Downloading Media From this Channel.\n **DOWNLOADED : **`{i}`"
+                f"تحميل الوسائط من هذه القناة.\n **التنـزيلات ⌁ : **`{i}`"
             )
     ps = subprocess.Popen(("ls", tempdir), stdout=subprocess.PIPE)
     output = subprocess.check_output(("wc", "-l"), stdin=ps.stdout)
@@ -73,12 +73,12 @@ async def get_media(event):
     output = str(output)
     output = output.replace("b'", "")
     output = output.replace("\\n'", "")
-    await event.edit(f"Successfully downloaded {output} number of media files")
+    await event.edit(f"تم التنزيل بنجاح ⌁ {output} عدد ملفات الوسائط")
 
 
 CMD_HELP.update(
     {
-        "channel_download": f"""**Plugin : **`channel_download`
+        "تحميل قناة": f"""**Plugin : **`تحميل قناة`
 
 **Telegram Channel Media Downloader Plugin for userbot.**
 
