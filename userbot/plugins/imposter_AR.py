@@ -1,7 +1,6 @@
 """
-Created by @Jisan7509
-Credit @Infinity20998
-Userbot plugin fot CatUserbot
+Created by @Jmthon
+Userbot plugin fot Jmthon bot
 """
 
 
