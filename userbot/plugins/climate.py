@@ -195,7 +195,7 @@ async def _(event):
         response_api = await response_api_zero.read()
         with io.BytesIO(response_api) as out_file:
             await event.reply(
-                f"**City : **`{input_str}`", file=out_file, reply_to=reply_to_id
+                f"**الـمدينة : **`{input_str}`", file=out_file, reply_to=reply_to_id
             )
     try:
         await event.delete()
