@@ -28,12 +28,12 @@ async def install(event):
                 load_module(shortname.replace(".py", ""))
                 await edit_or_reply(
                     event,
-                    f"Installed Plugin `{os.path.basename(downloaded_file_name)}`",
+                    f"المـلف مثـبت  `{os.path.basename(downloaded_file_name)}`",
                 )
             else:
                 os.remove(downloaded_file_name)
                 await edit_or_reply(
-                    event, "Errors! This plugin is already installed/pre-installed."
+                    event, "ان الـملـف مثـبت بالـفعل "
                 )
         except Exception as e:
             await edit_or_reply(event, str(e))
@@ -54,11 +54,11 @@ async def load(event):
         except BaseException:
             pass
         load_module(shortname)
-        await edit_or_reply(event, f"Successfully loaded {shortname}")
+        await edit_or_reply(event, f"تم التحميل بنجاح {shortname}")
     except Exception as e:
         await edit_or_reply(
             event,
-            f"Could not load {shortname} because of the following error.\n{str(e)}",
+            f"لا يمكن التحميل {shortname} بسبب الخطأ التالي.\n{str(e)}",
         )
 
 
@@ -87,10 +87,10 @@ async def send(event):
         ms = (end - start).seconds
         await event.delete()
         await caat.edit(
-            f"__**➥ Plugin Name:- {input_str} .**__\n__**➥ Uploaded in {ms} seconds.**__\n__**➥ Uploaded by :-**__ {DEFAULTUSER}"
+            f"__** اسـم المـلف:- {input_str} .**__\n__** تـم الـرفع {ms} ثـانية.**__\n__**➥ تـم الـرفع بـواسطة :-**__ {DEFAULTUSER}"
         )
     else:
-        await edit_or_reply(event, "404: File Not Found")
+        await edit_or_reply(event, " لمـلف غيـر مـوجود ")
 
 
 @bot.on(admin_cmd(pattern=r"unload (.*)", outgoing=True))
@@ -101,9 +101,9 @@ async def unload(event):
     shortname = event.pattern_match.group(1)
     try:
         remove_plugin(shortname)
-        await edit_or_reply(event, f"Unloaded {shortname} successfully")
+        await edit_or_reply(event, f"تـم الـمسح {shortname} بنـجاح ")
     except Exception as e:
-        await edit_or_reply(event, f"Successfully unload {shortname}\n{str(e)}")
+        await edit_or_reply(event, f"تـم مسـح بنـجاح {shortname}\n{str(e)} ")
 
 
 @bot.on(admin_cmd(pattern=r"uninstall (.*)", outgoing=True))
@@ -115,7 +115,7 @@ async def unload(event):
     path = Path(f"userbot/plugins/{shortname}.py")
     if not os.path.exists(path):
         return await edit_delete(
-            event, f"There is no plugin with path {path} to uninstall it"
+            event, f"لا يوجد مكون إضافي مع مسار {path} لإلغاء تثبيته "
         )
     os.remove(path)
     if shortname in CMD_LIST:
@@ -126,9 +126,9 @@ async def unload(event):
         CMD_HELP.pop(shortname)
     try:
         remove_plugin(shortname)
-        await edit_or_reply(event, f"{shortname} is Uninstalled successfully")
+        await edit_or_reply(event, f"{shortname} تم إلغاء التثبيت بنجاح ")
     except Exception as e:
-        await edit_or_reply(event, f"Successfully uninstalled {shortname}\n{str(e)}")
+        await edit_or_reply(event, f"تم الإزالة بنجاح {shortname}\n{str(e)} ")
 
 
 CMD_HELP.update(
