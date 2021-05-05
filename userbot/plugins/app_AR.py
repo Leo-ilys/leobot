@@ -1,21 +1,21 @@
 """Fetch App Details from Playstore.
 .app <app_name> to fetch app details.
 .appr <app_name>  to fetch app details with Xpl0iter request link.
-  © [cHAuHaN](http://t.me/amnd33p)"""
+  © [RRRD7](Jmthon)"""
 
 import bs4
 import requests
 
 from . import ALIVE_NAME
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Telethon-Arabs"
 
 
 @bot.on(admin_cmd(pattern="app (.*)"))
 @bot.on(sudo_cmd(pattern="app (.*)", allow_sudo=True))
 async def apk(event):
     app_name = event.pattern_match.group(1)
-    event = await edit_or_reply(event, "Searching!")
+    event = await edit_or_reply(event, " جـاري البـحث!")
     try:
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
@@ -144,10 +144,10 @@ async def apkr(event):
             + "'>View in Play Store</a>"
         )
         app_details += "\n\n<b>Download : </b> <a href='https://t.me/joinchat/JCu-H1NikiYDgNjpjPYd4A'>Request_Here</a>"
-        app_details += "\n\n===> @Xpl0iter <==="
+        app_details += "\n\n===> @Jmthon <==="
         await event.edit(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
-        await event.edit("No result found in search. Please enter **Valid app name**")
+        await event.edit("لم يتم الحصول على التطبيق او ان المعلومات خطا")
     except Exception as err:
         await event.edit("Exception Occured:- " + str(err))
 
