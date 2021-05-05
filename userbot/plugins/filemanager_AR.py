@@ -1,5 +1,5 @@
 """
-By:- @Mrconfused & @sandy1709
+By:- @Jmthon
 idea from userage
 """
 import asyncio
