@@ -42,7 +42,7 @@ async def _(event):
         scam_action = str(args[0]).lower()
         scam_time = int(args[1])
     else:
-        await edit_delete(event, "`Invalid Syntax !!`")
+        await edit_delete(event, "`بناء جملة غير صالح !! !!`")
         return
     try:
         if scam_time > 0:
@@ -73,7 +73,7 @@ async def _(event):
     except (Exception) as exc:
         await edit_or_reply(event, str(exc))
     else:
-        await edit_or_reply(event, "Successfully Promoted")
+        await edit_or_reply(event, "تـم الـترقيـة بنـجاح")
 
 
 @bot.on(admin_cmd(pattern=f"padmin$", outgoing=True))
@@ -83,28 +83,28 @@ async def _(event):
         return
     animation_interval = 1
     animation_ttl = range(20)
-    event = await edit_or_reply(event, "promoting.......")
+    event = await edit_or_reply(event, "جـاري الـرفع ⌁..")
     animation_chars = [
-        "**Promoting User As Admin...**",
-        "**Enabling All Permissions To User...**",
-        "**(1) Send Messages: ☑️**",
-        "**(1) Send Messages: ✅**",
-        "**(2) Send Media: ☑️**",
-        "**(2) Send Media: ✅**",
-        "**(3) Send Stickers & GIFs: ☑️**",
-        "**(3) Send Stickers & GIFs: ✅**",
-        "**(4) Send Polls: ☑️**",
-        "**(4) Send Polls: ✅**",
-        "**(5) Embed Links: ☑️**",
-        "**(5) Embed Links: ✅**",
-        "**(6) Add Users: ☑️**",
-        "**(6) Add Users: ✅**",
-        "**(7) Pin Messages: ☑️**",
-        "**(7) Pin Messages: ✅**",
-        "**(8) Change Chat Info: ☑️**",
-        "**(8) Change Chat Info: ✅**",
-        "**Permission Granted Successfully**",
-        f"**pRoMooTeD SuCcEsSfUlLy bY: {DEFAULTUSER}**",
+        "**جـاري رفع مشرف...**",
+        "**تمكين كافة أذونات المستخدم ⌁...**",
+        "**(1) إرسل رسائل: ☑️**",
+        "**(1) إرسل رسائل: ✅**",
+        "**(2) إرسال الوسائط: ☑️**",
+        "**(2) إرسال الوسائط: ✅**",
+        "**(3) إرسال ملصقات وصور GIF: ☑️**",
+        "**(3) إرسال ملصقات وصور GIF: ✅**",
+        "**(4) إرسال استطلاعات الرأي: ☑️**",
+        "**(4) إرسال استطلاعات الرأي: ✅**",
+        "**(5) روابط التضمين: ☑️**",
+        "**(5) روابط التضمين: ✅**",
+        "**(6) أضف مستخدمين: ☑️**",
+        "**(6) أضف مستخدمين: ✅**",
+        "**(7) تثبيت الرسائل: ☑️**",
+        "**(7) تثبيت الرسائل: ✅**",
+        "**(8) تغيير معلومات الدردشة: ☑️**",
+        "**(8) تغيير معلومات الدردشة: ✅**",
+        "**تم منح الإذن بنجاح**",
+        f"**امتيازات عامة ⌁: {DEFAULTUSER}**",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
