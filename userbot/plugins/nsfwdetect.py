@@ -1,5 +1,4 @@
-# Copyright (C) 2020 BY - GitHub.com/code-rgb [TG - @deleteduser420]
-# ported to cat by @mrconfused (@sandy1709)
+# Copyright (C) 2020 BY - GitHub.com/code-rgb [TG - @Jmthon
 
 import os
 
@@ -11,12 +10,12 @@ import requests
 async def detect(event):
     if Config.DEEP_AI is None:
         return await edit_delete(
-            event, "Add VAR `DEEP_AI` get Api Key from https://deepai.org/", 5
+            event, "أضـف VAR `DEEP_AI` اجـلب المـفتاح من هـنا from https://deepai.org/", 5
         )
     reply = await event.get_reply_message()
     if not reply:
         return await edit_delete(
-            event, "`Reply to any image or non animated sticker !`", 5
+            event, "`قـم برد على المـلصق !`", 5
         )
     catevent = await edit_or_reply(event, "`Downloading the file to check...`")
     media = await event.client.download_media(reply)
