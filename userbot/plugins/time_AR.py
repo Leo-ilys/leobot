@@ -1,4 +1,4 @@
-# Userbot timezone
+# Jmthon Bot timezone
 
 import os
 from datetime import datetime as dt
@@ -16,7 +16,7 @@ TZ_NUMBER = Config.TZ_NUMBER
 
 
 async def get_tz(con):
-    """Get time zone of the given country."""
+    """ Get time zone of the given country. """
     if "(Uk)" in con:
         con = con.replace("Uk", "UK")
     if "(Us)" in con:
@@ -71,11 +71,11 @@ async def time_func(tdata):
     else:
         await edit_or_reply(
             tdata,
-            f"`It's`  **{dt.now().strftime(t_form)}**` on `**{dt.now().strftime(d_form)}** `here.`",
+            f"`الـوقت الان`  **{dt.now().strftime(t_form)}**` لـتاريـخ `**{dt.now().strftime(d_form)}** الـيوم",
         )
         return
     if not timezones:
-        await edit_or_reply(tdata, "`Invaild country.`")
+        await edit_or_reply(tdata, "البـلد غيـر مـوجود ⌁")
         return
     if len(timezones) == 1:
         time_zone = timezones[0]
@@ -84,14 +84,14 @@ async def time_func(tdata):
             tz_num = int(tz_num)
             time_zone = timezones[tz_num - 1]
         else:
-            return_str = f"`{c_name} has multiple timezones:`\n\n"
+            return_str = f"`{c_name} لها مناطق زمنية متعددة:`\n\n"
 
             for i, item in enumerate(timezones):
                 return_str += f"`{i+1}. {item}`\n"
 
-            return_str += "\n`Choose one by typing the number "
-            return_str += "in the command.`\n"
-            return_str += f"`Example: .ctime {c_name} 2`"
+            return_str += "\n`اختر واحدة عن طريق كتابة الرقم "
+            return_str += "في الأمر.`\n"
+            return_str += f"`مثال: .ctime {c_name} 2`"
 
             await edit_or_reply(tdata, return_str)
             return
@@ -101,7 +101,7 @@ async def time_func(tdata):
     if c_name != COUNTRY:
         await edit_or_reply(
             tdata,
-            f"`It's`  **{dtnow1}**` on `**{dtnow2}**  `in {c_name} ({time_zone} timezone).`",
+            f"`الـوقت الان`  **{dtnow1}**` فـي `**{dtnow2}**  `فـي {c_name} ({time_zone} timezone).`",
         )
         return
     if COUNTRY:
@@ -120,7 +120,7 @@ async def _(event):
         return
     reply_msg_id = None
     current_time = dt.now().strftime(
-        f"⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡\n⚡USERBOT TIMEZONE⚡\n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡\n   {LOCATION}\n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡"
+        f"⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁\n⌁ Arab time\n⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁\n   {LOCATION}\n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁⌁"
     )
     input_str = event.pattern_match.group(1)
     if event.sender_id != bot.uid:
@@ -141,7 +141,7 @@ async def _(event):
     await event.client.send_file(
         event.chat_id,
         required_file_name,
-        # Courtesy: @ManueI15
+        # Courtesy: @klanr
         reply_to=reply_msg_id,
     )
     os.remove(required_file_name)
