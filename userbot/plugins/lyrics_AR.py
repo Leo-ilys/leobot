@@ -1,4 +1,4 @@
-# credits to @mrconfused (@sandy1709)
+# credits to @Jmthon
 import io
 import os
 
