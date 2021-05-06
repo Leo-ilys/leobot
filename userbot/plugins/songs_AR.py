@@ -1,7 +1,7 @@
-# by  @sandy1709 ( https://t.me/mrconfused  )
+# by  @Jmthon
 
 # songs finder for catuserbot
-# reverse search by  @Lal_bakthan
+# reverse search by  @RRRD7
 
 import asyncio
 import base64
@@ -26,8 +26,8 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
 # =========================================================== #
 
 
-@bot.on(admin_cmd(pattern="(song|song320)($| (.*))"))
-@bot.on(sudo_cmd(pattern="(song|song320)($| (.*))", allow_sudo=True))
+@bot.on(admin_cmd(pattern="(اغنية|song320)($| (.*))"))
+@bot.on(sudo_cmd(pattern="(اغنية|song320)($| (.*))", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,7 +42,7 @@ async def _(event):
         await edit_or_reply(event, "`What I am Supposed to find `")
         return
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
+    catevent = await edit_or_reply(event, "يـتم جلـب الأغـنية")
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await catevent.edit(
@@ -76,7 +76,7 @@ async def _(event):
         return await catevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
-    await catevent.edit("`yeah..! i found something wi8..🥰`")
+    await catevent.edit("`يتـم الـبحث`")
     catthumb = Path(f"{catname}.jpg")
     if not os.path.exists(catthumb):
         catthumb = Path(f"{catname}.webp")
