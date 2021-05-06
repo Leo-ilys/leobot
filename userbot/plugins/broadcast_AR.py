@@ -244,7 +244,7 @@ async def catbroadcast_list(event):
     if sql.num_broadcastlist_chats() == 0:
         return await edit_delete(
             event,
-            "لم تقم بإنشاء معلومات فحص فئة واحدة على الأقل للحصول على مزيد من المساعدة راسل @klanr",
+            "لم تقم بإنشاء معلومات فحص فئة واحدة على الأقل للحصول على مزيد من المساعدة راسل @RRRD7",
             parse_mode=parse_pre,
         )
     chats = sql.get_broadcastlist_chats()
