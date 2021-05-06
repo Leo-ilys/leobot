@@ -1,5 +1,4 @@
-# plugin by @deleteduser420
-# ported to telethon by @mrconfused (@sandy1709)
+# plugin by @Jmthon
 
 import os
 
@@ -65,20 +64,20 @@ async def mediainfo(event):
     X_MEDIA = None
     reply = await event.get_reply_message()
     if not reply:
-        await edit_or_reply(event, "reply to media to get info")
+        await edit_or_reply(event, "قـم بالـرد على الوسـائط للـحصول على المعلـومات")
         return
     if not reply.media:
-        await edit_or_reply(event, "reply to media to get info")
+        await edit_or_reply(event, "قـم بالـرد على الوسـائط للـحصول على المعلـومات")
         return
-    catevent = await edit_or_reply(event, "`Gathering ...`")
+    catevent = await edit_or_reply(event, "يـتم البـحث ⌁ ...")
     X_MEDIA = reply.file.mime_type
     if (not X_MEDIA) or (X_MEDIA.startswith(("text"))):
-        return await catevent.edit("Reply To a supported Media Format")
+        return await catevent.edit("قـم بالـرد على الوسـائط للـحصول على المعلـومات)
     hmm = await file_data(reply)
     file_path = await reply.download_media(Config.TEMP_DIR)
     out, err, ret, pid = await _catutils.runcmd(f"mediainfo '{file_path}'")
     if not out:
-        out = "Not Supported"
+        out = "هذه الـصيغه غـير مدعـومة"
     body_text = f"""
 <h2>JSON</h2>
 <code>
@@ -90,7 +89,7 @@ async def mediainfo(event):
 </code>"""
     link = await post_to_telegraph(f"{X_MEDIA}", body_text)
     await catevent.edit(
-        f"ℹ️  <b>MEDIA INFO:  <a href ='{link}' > {X_MEDIA}</a></b>",
+        f"⌁  <b>الـمعلومات:  <a href ='{link}' > {X_MEDIA}</a></b>",
         parse_mode="HTML",
         link_preview=True,
     )
