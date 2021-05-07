@@ -15,11 +15,11 @@ DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
 DEFAULTUSERBIO = (
     str(DEFAULT_BIO)
     if DEFAULT_BIO
-    else "@Jmthon˙"
+    else " - إكسروا قيود الزعل الموت يأخذ بغفلة ‏"
 )
 
 
-@bot.on(admin_cmd(pattern="clone ?(.*)"))
+@bot.on(admin_cmd(pattern="نسخ ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -58,16 +58,16 @@ async def _(event):
     await event.client(functions.photos.UploadProfilePhotoRequest(pfile))
     await event.delete()
     await event.client.send_message(
-        event.chat_id, "**- تـم انتـحال الضـحيۿ **", reply_to=reply_message
+        event.chat_id, "**تــم نســخ الـبروفايــل**", reply_to=reply_message
     )
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
-            f"#CLONED\nSuccesfully cloned [{first_name}](tg://user?id={user_id })",
+            f"#النسخ\nتم نسخ ↫ [{first_name}](tg://user?id={user_id }) بنجاح✅",
         )
 
 
-@bot.on(admin_cmd(pattern="revert$"))
+@bot.on(admin_cmd(pattern="اعاده$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -83,10 +83,11 @@ async def _(event):
     await event.client(functions.account.UpdateProfileRequest(about=bio))
     await event.client(functions.account.UpdateProfileRequest(first_name=name))
     await event.client(functions.account.UpdateProfileRequest(last_name=blank))
-    await event.edit(" - تم اعادۿ ضبط حسـابڪ بنجـاحہ‌َ .")
+    await event.edit("تمت اعاده البروفايل بنجاح ⌁")
     if BOTLOG:
         await event.client.send_message(
-            BOTLOG_CHATID, f"#REVERT\nSuccesfully reverted back to your profile"
+            BOTLOG_CHATID,
+            f"#الاعاده\nالاعادة تعمل بنجاح تم اعاده البروفايل الى وضعه الاصلي ⌁",
         )
 
 
@@ -142,7 +143,7 @@ async def get_full_user(event):
 
 CMD_HELP.update(
     {
-        "الانتحال": "**Plugin : **`انتحال`\
+        "clone": "**Plugin : **`clone`\
         \n\n  •  **Syntax :** `.clone`<reply to user whom you want to clone\
         \n  •  **Function : **clone the replied user account\
         \n\n  •  **Syntax : **`.revert`\
