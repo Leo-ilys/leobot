@@ -1,8 +1,8 @@
 from telethon.tl.types import ChannelParticipantsAdmins
 
 
-@bot.on(admin_cmd(pattern="tagall$"))
-@bot.on(sudo_cmd(pattern="tagall$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="تاك$"))
+@bot.on(sudo_cmd(pattern="تاك$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -17,14 +17,14 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="all( (.*)|$)"))
-@bot.on(sudo_cmd(pattern="all( (.*)|$)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="للكل( (.*)|$)"))
+@bot.on(sudo_cmd(pattern="للكل( (.*)|$)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     reply_to_id = await reply_id(event)
     input_str = event.pattern_match.group(1)
-    mentions = input_str or "تـم عمـل تـاك لـ 200 شـخص ⌁"
+    mentions = input_str or "تـم عمـل تـاك لـ 200 شـخص"
     chat = await event.get_input_chat()
     async for x in event.client.iter_participants(chat, 200):
         mentions += f"[\u2063](tg://user?id={x.id})"
@@ -37,7 +37,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    mentions = "@admin: **تـم عـمل ابـلاغ للأدمنـية ⌁**"
+    mentions = "@admin: **تـم عـمل ابـلاغ للأدمنـية**"
     chat = await event.get_input_chat()
     reply_to_id = await reply_id(event)
     async for x in event.client.iter_participants(
