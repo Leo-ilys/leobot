@@ -1,7 +1,7 @@
-# by  @Jmthon
+# by  @Jmthon ( https://t.me/rrrd7  )
 
 # songs finder for catuserbot
-# reverse search by  @RRRD7
+# reverse search by  @Jmthon
 
 import asyncio
 import base64
@@ -26,8 +26,8 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
 # =========================================================== #
 
 
-@bot.on(admin_cmd(pattern="(اغنية|song320)($| (.*))"))
-@bot.on(sudo_cmd(pattern="(اغنية|song320)($| (.*))", allow_sudo=True))
+@bot.on(admin_cmd(pattern="(بحث|song320)($| (.*))"))
+@bot.on(sudo_cmd(pattern="(بحث|song320)($| (.*))", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,14 +42,14 @@ async def _(event):
         await edit_or_reply(event, "`What I am Supposed to find `")
         return
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catevent = await edit_or_reply(event, "يـتم جلـب الأغـنية")
+    catevent = await edit_or_reply(event, "**جـار الـبـحـث ؏ــن اغـنــيه个**")
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await catevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
     cmd = event.pattern_match.group(1)
-    if cmd == "song":
+    if cmd == "بحث":
         q = "128k"
     elif cmd == "song320":
         q = "320k"
@@ -76,7 +76,7 @@ async def _(event):
         return await catevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
-    await catevent.edit("`يتـم الـبحث`")
+    await catevent.edit("**جـآري تنزًيݪ آݪآغـٰــــــنيههہ آنتظـــُ͢ـُــر**")
     catthumb = Path(f"{catname}.jpg")
     if not os.path.exists(catthumb):
         catthumb = Path(f"{catname}.webp")
