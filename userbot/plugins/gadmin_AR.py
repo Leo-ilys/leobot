@@ -43,21 +43,21 @@ UNBAN_RIGHTS = ChatBannedRights(
 )
 
 
-@bot.on(admin_cmd(pattern=r"gban(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"gban(?: |$)(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"حظر(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern=r"حظر(?: |$)(.*)", allow_sudo=True))
 async def catgban(event):
     if event.fwd_from:
         return
-    cate = await edit_or_reply(event, "`يـتم الحظر`")
+    cate = await edit_or_reply(event, "جـار الــحظر")
     start = datetime.now()
     user, reason = await get_user_from_event(event, cate)
     if not user:
         return
     if user.id == (await event.client.get_me()).id:
-        await cate.edit("لماذا تريد ان اقوم بحظر نفسي")
+        await cate.edit("لـٰـَہمـٰـَہاذا احـٰـَہظر نفـٰـَہسـٰـَہيـٰـَہ")
         return
     if user.id in CAT_ID:
-        await cate.edit("لماذا تريد ان تقوم بحظر مطوري")
+        await cate.edit("لـمـٰآذًآ أحــ۫͜ـظًڒٍ مـٰطُﻭڒٍي")
         return
     try:
         hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -66,7 +66,7 @@ async def catgban(event):
         pass
     if gban_sql.is_gbanned(user.id):
         await cate.edit(
-            f"`the `[user](tg://user?id={user.id})` تـم بالتاكيد حظره`"
+            f"[{user.first_name}](tg://user?id={user.id}) موجود بالفعل في قائمة الحظر بأي طريقة تحقق مرة أخرى"
         )
     else:
         gban_sql.catgban(user.id, reason)
@@ -75,11 +75,9 @@ async def catgban(event):
     count = 0
     sandy = len(san)
     if sandy == 0:
-        await cate.edit("`انـت است مشرف في الـمجموعه ")
+        await cate.edit("أنت لست مدير مجموعة واحدة على الأقل ")
         return
-    await cate.edit(
-        f"`initiating gban of the `[user](tg://user?id={user.id}) `in {len(san)} groups`"
-    )
+    await cate.edit(f"بدء حظر ↠ [{user.first_name}](tg://user?id={user.id})")
     for i in range(sandy):
         try:
             await event.client(EditBannedRequest(san[i], user.id, BANNED_RIGHTS))
@@ -88,17 +86,17 @@ async def catgban(event):
         except BadRequestError:
             await event.client.send_message(
                 BOTLOG_CHATID,
-                f"`لـيس لديك صلاحيات الحظر في  :`\n**الدردشه :** {event.chat.title}(`{event.chat_id}`)\n`لتـقوم بالحظر`",
+                f"`You don't have required permission in :`\n**Chat :** {event.chat.title}(`{event.chat_id}`)\n`For banning here`",
             )
     end = datetime.now()
     cattaken = (end - start).seconds
     if reason:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `تم حظره في  {count} من المجموعات في {cattaken} ثانيه`!!\n**بـسبب :** `{reason}`"
+            f"⌁  المستخدم » [{user.first_name}](tg://user?id={user.id})\n  ⌁ تم حـظره "
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `تم حظره في  {count} من المجموعات في {cattaken} ثانيه`!!"
+            f"⌁  المستخدم » [{user.first_name}](tg://user?id={user.id})\n  ⌁ تم حـظره "
         )
 
     if BOTLOG and count != 0:
@@ -132,12 +130,12 @@ async def catgban(event):
             pass
 
 
-@bot.on(admin_cmd(pattern=r"ungban(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"ungban(?: |$)(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"الغاء حظر(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern=r"الغاء حظر(?: |$)(.*)", allow_sudo=True))
 async def catgban(event):
     if event.fwd_from:
         return
-    cate = await edit_or_reply(event, "` يتم الـغاء الحظر العام`")
+    cate = await edit_or_reply(event, "جـار الـغاء الحـظر ⌁")
     start = datetime.now()
     user, reason = await get_user_from_event(event, cate)
     if not user:
@@ -146,7 +144,7 @@ async def catgban(event):
         gban_sql.catungban(user.id)
     else:
         await cate.edit(
-            f"the [user](tg://user?id={user.id}) `is not in your gbanned list`"
+            f"[{user.first_name}](tg://user?id={user.id}) لـيس موجـود في قـائمه الحـظر"
         )
         return
     san = []
@@ -154,11 +152,9 @@ async def catgban(event):
     count = 0
     sandy = len(san)
     if sandy == 0:
-        await cate.edit("`you are not even admin of atleast one group `")
+        await cate.edit("أنت لست مسؤولًا حتى عن مجموعة واحدة على الأقل ")
         return
-    await cate.edit(
-        f"initiating ungban of the [user](tg://user?id={user.id}) in `{len(san)}` groups"
-    )
+    await cate.edit(f"بدء الغاء حظر ↠ [{user.first_name}](tg://user?id={user.id})")
     for i in range(sandy):
         try:
             await event.client(EditBannedRequest(san[i], user.id, UNBAN_RIGHTS))
@@ -177,7 +173,7 @@ async def catgban(event):
         )
     else:
         await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) `was ungbanned in {count} groups in {cattaken} seconds`!!"
+            f"❃∫ العضو » [{user.first_name}](tg://user?id={user.id}) \n ❃∫ تم الغاء حظره"
         )
 
     if BOTLOG and count != 0:
@@ -204,8 +200,8 @@ async def catgban(event):
             )
 
 
-@bot.on(admin_cmd(pattern="listgban$"))
-@bot.on(sudo_cmd(pattern=r"listgban$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="المحظورين$"))
+@bot.on(sudo_cmd(pattern=r"المحظورين$", allow_sudo=True))
 async def gablist(event):
     if event.fwd_from:
         return
@@ -220,17 +216,17 @@ async def gablist(event):
                     f"👉 [{a_user.chat_id}](tg://user?id={a_user.chat_id}) Reason None\n"
                 )
     else:
-        GBANNED_LIST = "no Gbanned Users (yet)"
+        GBANNED_LIST = "لايوجد مඋظوࢪين حتتى الان"
     await edit_or_reply(event, GBANNED_LIST)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"gmute(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"gmute(?: |$)(.*)", allow_sudo=True))
+@bot.on(admin_cmd(outgoing=True, pattern=r"كتم(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern=r"كتم(?: |$)(.*)", allow_sudo=True))
 async def startgmute(event):
     if event.fwd_from:
         return
     if event.is_private:
-        await event.edit("`Unexpected issues or ugly errors may occur!`")
+        await event.edit("قد تحدث مشاكل غير متوقعة أو أخطاء !")
         await asyncio.sleep(2)
         userid = event.chat_id
         reason = event.pattern_match.group(1)
@@ -239,16 +235,18 @@ async def startgmute(event):
         if not user:
             return
         if user.id == bot.uid:
-            return await edit_or_reply(event, "`Sorry, I can't gmute myself`")
+            return await edit_or_reply(event, "لا استطيع كتم نفسي ؟")
         userid = user.id
     try:
         user = (await event.client(GetFullUserRequest(userid))).user
     except Exception:
-        return await edit_or_reply(event, "`Sorry. I am unable to fetch the user`")
+        return await edit_or_reply(
+            event, "يرجى الرد على مستخدم أو إضافته إلى الأمر لكتمه."
+        )
     if is_muted(userid, "gmute"):
         return await edit_or_reply(
             event,
-            f"{_format.mentionuser(user.first_name ,user.id)} ` is already gmuted`",
+            f"هذًا الـمستخدم مـكتوم بالـفعل ⌁",
         )
     try:
         mute(userid, "gmute")
@@ -258,12 +256,12 @@ async def startgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully gmuted`\n**Reason :** `{reason}`",
+                f"▪️︙المستخدم تم كتمه من هنا",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully gmuted`",
+                f"{_format.mentionuser(user.first_name ,user.id)} ▪️︙ تم كتمه من هنا",
             )
     if BOTLOG:
         reply = await event.get_reply_message()
@@ -284,13 +282,13 @@ async def startgmute(event):
             await reply.forward_to(BOTLOG_CHATID)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"ungmute(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"ungmute(?: |$)(.*)", allow_sudo=True))
+@bot.on(admin_cmd(outgoing=True, pattern=r"الغاء كتم(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern=r"الغاء كتم(?: |$)(.*)", allow_sudo=True))
 async def endgmute(event):
     if event.fwd_from:
         return
     if event.is_private:
-        await event.edit("`Unexpected issues or ugly errors may occur!`")
+        await event.edit("قد تحدث مشاكل غير متوقعة أو أخطاء !")
         await asyncio.sleep(2)
         userid = event.chat_id
         reason = event.pattern_match.group(1)
@@ -299,16 +297,19 @@ async def endgmute(event):
         if not user:
             return
         if user.id == bot.uid:
-            return await edit_or_reply(event, "`Sorry, I can't gmute myself`")
+            return await edit_or_reply(event, "لا استطيع كتم نفسي؟")
         userid = user.id
     try:
         user = (await event.client(GetFullUserRequest(userid))).user
     except Exception:
-        return await edit_or_reply(event, "`Sorry. I am unable to fetch the user`")
+        return await edit_or_reply(
+            event,
+            "يرجى الرد على مستخدم أو إضافة اسم المستخدم الخاص به إلى الأمر لإلغاء كتمه",
+        )
 
     if not is_muted(userid, "gmute"):
         return await edit_or_reply(
-            event, f"{_format.mentionuser(user.first_name ,user.id)} `is not gmuted`"
+            event, f"هـذا المستخدم لـيس مكـتوم هنـا ⌁"
         )
     try:
         unmute(userid, "gmute")
@@ -318,12 +319,12 @@ async def endgmute(event):
         if reason:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully ungmuted`\n**Reason :** `{reason}`",
+                f"▪️︙المستخدم تم الغاء كتمه من هنا",
             )
         else:
             await edit_or_reply(
                 event,
-                f"{_format.mentionuser(user.first_name ,user.id)} `is Successfully ungmuted`",
+                f"{_format.mentionuser(user.first_name ,user.id)} ▪️︙ تم الغاء كتمه من هنا",
             )
     if BOTLOG:
         if reason:
@@ -347,21 +348,21 @@ async def watcher(event):
         await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"gkick(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"gkick(?: |$)(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"طرد(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern=r"طرد(?: |$)(.*)", allow_sudo=True))
 async def catgkick(event):
     if event.fwd_from:
         return
-    cate = await edit_or_reply(event, "`gkicking.......`")
+    cate = await edit_or_reply(event, "يـتم الـطرد ⌁")
     start = datetime.now()
     user, reason = await get_user_from_event(event, cate)
     if not user:
         return
     if user.id == (await event.client.get_me()).id:
-        await cate.edit("why would I kick myself")
+        await cate.edit("لـماذا اطـرد نـفسي ⌁")
         return
     if user.id in CAT_ID:
-        await cate.edit("why would I kick my dev")
+        await cate.edit("لـماذا اطـرد مـطوري ⌁")
         return
     try:
         hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
