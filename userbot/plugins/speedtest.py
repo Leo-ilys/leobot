@@ -8,8 +8,8 @@ import speedtest
 from . import reply_id
 
 
-@bot.on(admin_cmd(pattern="speedtest ?(.*)"))
-@bot.on(sudo_cmd(pattern="speedtest ?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="سرعه النت ?(.*)"))
+@bot.on(sudo_cmd(pattern="سرعه النت ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -23,7 +23,7 @@ async def _(event):
     elif input_str == "text":
         as_text = True
     catevent = await edit_or_reply(
-        event, "يـرجى الانتضـار لجـلب سـرعة الانـترنيت لديـك ⌁"
+        event, "**حساب سرعة الإنترنت الخاصة بي. ارجوك انتظر!**"
     )
     start = datetime.now()
     s = speedtest.Speedtest()
@@ -45,13 +45,13 @@ async def _(event):
         speedtest_image = response
         if as_text:
             await catevent.edit(
-                """`سـرعة الانـترنيت لديـك هيـة {} بالـثانية 📳`
+                """`SpeedTest completed in {} seconds`
 
-`الـتحميل : {}`
-`الـرفع : {}`
-`الـبنك : {}`
-`مزود خدمة الإنترنت : {}`
-`تقييم ISP : {}`""".format(
+`Download: {}`
+`Upload: {}`
+`Ping: {}`
+`Internet Service Provider: {}`
+`ISP Rating: {}`""".format(
                     ms,
                     convert_from_bytes(download_speed),
                     convert_from_bytes(upload_speed),
@@ -64,7 +64,7 @@ async def _(event):
             await event.client.send_file(
                 event.chat_id,
                 speedtest_image,
-                caption="**سـرعة الانتـرنيت ** اكتـملت  {} ثانيـة 📳".format(ms),
+                caption="**اكتمل اختبارالسرعة في** {} **ثانيه**".format(ms),
                 force_document=as_document,
                 reply_to=reply_msg_id,
                 allow_cache=False,
@@ -72,10 +72,10 @@ async def _(event):
             await event.delete()
     except Exception as exc:
         await catevent.edit(
-            """**سـرعة الانتـرنيت** اكـتمل خـلال {} ثانـية
-الـتحميل : {}
-الـرفع : {}
-البنـك : {}
+            """**SpeedTest** completed in {} seconds
+Download: {}
+Upload: {}
+Ping: {}
 
 __With the Following ERRORs__
 {}""".format(
