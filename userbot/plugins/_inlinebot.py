@@ -21,7 +21,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         query = event.text
         hmm = re.compile("secret (.*) (.*)")
         match = re.findall(hmm, query)
-        if query.startswith("**JMTHON BOT") and event.query.user_id == bot.uid:
+        if query.startswith("**Jmthon Bot") and event.query.user_id == bot.uid:
             buttons = [
                 (
                     custom.Button.inline("Stats", data="stats"),
@@ -53,8 +53,8 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "© Jmthon helper",
-                text="{}\n**- عدد الاضافات :** {}".format(query, len(CMD_LIST)),
+                "© Userbot Help",
+                text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
             )
@@ -135,11 +135,11 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
 
             buttons = [
-                custom.Button.inline("اضهار الرساله 🔐", data=f"secret_{timestamp}")
+                custom.Button.inline("show message 🔐", data=f"secret_{timestamp}")
             ]
             result = builder.article(
-                title="✨ ارسال الهمسه ✨",
-                text=f"** هذه الهمسه الى {sandy} هو الوحيد الذي يستطيع رؤيتها.**",
+                title="secret message",
+                text=f"🔒 A whisper message to {sandy}, Only he/she can open it.",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -161,7 +161,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "عليك الحصول على بوت جمثون من هنا - @JMTHON "
+            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -178,7 +178,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "عليك الحصول على بوت جمـثون خاص بك من - @JMTHON "
+            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"secret_(.*)")))
@@ -220,8 +220,8 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                 reply_pop_up_alert = "{} is useless".format(plugin_name)
             else:
                 reply_pop_up_alert = help_string
-            reply_pop_up_alert += "استخدم .unload {} لحذف هذه الاضافه ©Jmthon".format(
-                plugin_name
+            reply_pop_up_alert += (
+                "Use .unload {} to remove this plugin ©catuserbot".format(plugin_name)
             )
             try:
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
@@ -237,7 +237,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                         caption=plugin_name,
                     )
         else:
-            reply_pop_up_alert = "عليك الحصول على بوت جمثون - @JMTHON.  "
+            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
@@ -245,7 +245,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         if event.query.user_id == bot.uid:
             await event.edit("menu closed")
         else:
-            reply_pop_up_alert = "عليك الحصول على بوت جمثون - @JMTHON  "
+            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"stats")))
@@ -293,11 +293,11 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    " السـابق", data="{}_prev({})".format(prefix, modulo_page)
+                    "الـسابق", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline(" اغـلاق ", data="close"),
+                custom.Button.inline("اغـلاق", data="close"),
                 custom.Button.inline(
-                    "التـالي  ", data="{}_next({})".format(prefix, modulo_page)
+                    "الـتالي", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]
