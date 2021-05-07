@@ -69,13 +69,13 @@ async def add_new_filter(new_handler):
     elif new_handler.reply_to_msg_id and not string:
         rep_msg = await new_handler.get_reply_message()
         string = rep_msg.text
-    success = "`الـرد` **{}** `{} تـم اضـافتة بنـجـاح 𖠕`"
+    success = "`الـرد` **{}** `{} تـم اضـافتة بنـجـاح ⌁`"
     if add_filter(str(new_handler.chat_id), keyword, string, msg_id) is True:
         return await edit_or_reply(new_handler, success.format(keyword, "added"))
     remove_filter(str(new_handler.chat_id), keyword)
     if add_filter(str(new_handler.chat_id), keyword, string, msg_id) is True:
         return await edit_or_reply(new_handler, success.format(keyword, "Updated"))
-    await edit_or_reply(new_handler, f"𖠕 خطـأ اثنـاء تعيـن الـرد {keyword}")
+    await edit_or_reply(new_handler, f"⌁ خطـأ اثنـاء تعيـن الـرد {keyword}")
 
 
 @bot.on(admin_cmd(pattern="safis$"))
@@ -106,7 +106,7 @@ async def remove_a_filter(r_handler):
     if not remove_filter(r_handler.chat_id, filt):
         await r_handler.edit("الـرد` {} `غير موجود.".format(filt))
     else:
-        await r_handler.edit("الـرد `{} `تـم حـذفة بنـجـاح 𖠕".format(filt))
+        await r_handler.edit("الـرد `{} `تـم حـذفة بنـجـاح ⌁".format(filt))
 
 
 @bot.on(admin_cmd(pattern="rmsafis$"))
@@ -117,9 +117,9 @@ async def on_all_snip_delete(event):
     filters = get_filters(event.chat_id)
     if filters:
         remove_all_filters(event.chat_id)
-        await edit_or_reply(event, f"تم حذف المرشحات في الدردشة الحالية بنجاح 𖠕")
+        await edit_or_reply(event, f"تم حذف المرشحات في الدردشة الحالية بنجاح ⌁")
     else:
-        await edit_or_reply(event, f"لا توجد فلاتر في هذه المجموعة 𖠕")
+        await edit_or_reply(event, f"لا توجد فلاتر في هذه المجموعة ⌁")
 
 
 CMD_HELP.update(
