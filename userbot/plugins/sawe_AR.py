@@ -77,8 +77,8 @@ async def _(event):
         update_previous_welcome(event.chat_id, current_message.id)
 
 
-@bot.on(admin_cmd(pattern=r"sawe ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"sawe ?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"ترحيب ?(.*)"))
+@bot.on(sudo_cmd(pattern=r"ترحيب ?(.*)", allow_sudo=True))
 async def save_welcome(event):
     if event.fwd_from:
         return
@@ -89,9 +89,9 @@ async def save_welcome(event):
         if BOTLOG_CHATID:
             await bot.send_message(
                 BOTLOG_CHATID,
-                f"#WELCOME_NOTE\
-                \nCHAT ID: {event.chat_id}\
-                \nThe following message is saved as the welcome note for the {event.chat.title}, Don't delete this message !!",
+                f"#الترحيب\
+                \nايدي الدردشة: {event.chat_id}\
+                \nيتم حفظ الرسالة التالية كملاحظة ترحيب لـ {event.chat.title}, لا تحذف هذه الرسالة !!",
             )
             msg_o = await event.client.forward_messages(
                 entity=BOTLOG_CHATID, messages=msg, from_peer=event.chat_id, silent=True
@@ -100,50 +100,50 @@ async def save_welcome(event):
         else:
             await edit_or_reply(
                 event,
-                "`- يتطلب حفظ الوسائط ڪجࢪ࣪۽ من ملاحظۿ التࢪحيب تعيين BOTLOG_CHATID .`",
+                "**يتطلب حفظ الوسائط كجزء من الملاحظة الترحيبية تعيين BOTLOG_CHATID.**",
             )
             return
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "- تـم حفـض تࢪحيبڪ بنـجاح ."
+    success = "**『تــم {} الترحــيب فـي هـذه الـدردشــة 』**"
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
-        return await edit_or_reply(event, success.format("saved"))
+        return await edit_or_reply(event, success.format("حفظ"))
     rm_welcome_setting(event.chat_id)
     if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
-        return await edit_or_reply(event, success.format("updated"))
-    await edit_or_reply("Error while setting welcome in this group")
+        return await edit_or_reply(event, success.format("تحديث"))
+    await edit_or_reply("خطأ أثناء تعيين الترحيب في هذه المجموعة")
 
 
-@bot.on(admin_cmd(pattern="clwe$"))
-@bot.on(sudo_cmd(pattern="clwe$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="مسح ترحيب$"))
+@bot.on(sudo_cmd(pattern="مسح ترحيب$", allow_sudo=True))
 async def del_welcome(event):
     if event.fwd_from:
         return
     if rm_welcome_setting(event.chat_id) is True:
-        await edit_or_reply(event, "- تـم مـسح تࢪحيبڪ بنـجاح .")
+        await edit_or_reply(event, "**تــم حــذف الترحــيب فـي هـذه الـدردشــة𖥤**")
     else:
-        await edit_or_reply(event, "- لايـوجد ࢦـديڪ هـنا تࢪحيب .")
+        await edit_or_reply(event, "**ليس هناك اي ترحــيب فـي الـدردشــة**")
 
 
-@bot.on(admin_cmd(pattern="listsawe$"))
-@bot.on(sudo_cmd(pattern="listsawe$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="الترحيب$"))
+@bot.on(sudo_cmd(pattern="الترحيب$", allow_sudo=True))
 async def show_welcome(event):
     if event.fwd_from:
         return
     cws = get_current_welcome_settings(event.chat_id)
     if not cws:
-        await edit_or_reply(event, "`- لايـوجد ࢦـديڪ هـنا تࢪحيب .`")
+        await edit_or_reply(event, "**لاتوجد رساله ترحيب محفوظة هنا**")
         return
     if cws.f_mesg_id:
         msg_o = await bot.get_messages(entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id))
         await edit_or_reply(
-            event, "`- أࢪحب حالياً بالمستخدمين الجدد بهذۿ الملاحظۿ التࢪحيبيۿ .`"
+            event, "**أرحب حاليًا بالمستخدمين الجدد بهذه الرساله الترحيبية.🜝**"
         )
         await event.reply(msg_o.message, file=msg_o.media)
     elif cws.reply:
         await edit_or_reply(
-            event, "`- أࢪحب حالياً بالمستخدمين الجدد بهذۿ الملاحظۿ التࢪحيبيۿ .`"
+            event, "**أرحب حاليًا بالمستخدمين الجدد بهذه الرساله الترحيبية.🜝**"
         )
         await event.reply(cws.reply)
 
@@ -151,13 +151,13 @@ async def show_welcome(event):
 CMD_HELP.update(
     {
         "welcome": "**Plugin :** `welcome`\
-\n\n  •  **Syntax :** `.sawe` <welcome message> or reply to a message with .savewelcome\
+\n\n  •  **Syntax :** `.savewelcome` <welcome message> or reply to a message with .savewelcome\
 \n  •  **Function :** Saves the message as a welcome note in the chat.\
 \n\n  •  Available variables for formatting welcome messages :\
 \n`{mention}, {title}, {count}, {first}, {last}, {fullname}, {userid}, {username}, {my_first}, {my_fullname}, {my_last}, {my_mention}, {my_username}`\
-\n\n  •  **Syntax :** `.listsawe`\
+\n\n  •  **Syntax :** `.listwelcome`\
 \n  •  **Function :** Check whether you have a welcome note in the chat.\
-\n\n  •  **Syntax :** `.clwe`\
+\n\n  •  **Syntax :** `.clearwelcome`\
 \n  •  **Function :** Deletes the welcome note for the current chat.\
 "
     }
