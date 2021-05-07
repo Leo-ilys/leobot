@@ -947,7 +947,7 @@ import time
 from . import StartTime, get_readable_time, reply_id
 
 DEFAULTUSER = "𝗝𝗠𝗧𝗛𝗢𝗡"
-CAT_IMG = "https://telegra.ph/file/c1c7b0375ec633b1c483b.mp4"
+CAT_IMG = "https://telegra.ph/file/aa0115dc4eb24a30394d0.jpg"
 CUSTOM_ALIVE_TEXT = "𓆩 𝙎𝙊𝙐𝙍𝘾-𝗝𝗠𝗧𝗛𝗢𝗡  𓆪"
 EMOJI = "  𓄂† "
 
