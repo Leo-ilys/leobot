@@ -1,55 +1,42 @@
 import sys
 from os import execl
-from time import sleep
 
 from . import BOTLOG, BOTLOG_CHATID, HEROKU_APP, bot
 
 
-@bot.on(admin_cmd(pattern="restart$"))
-@bot.on(sudo_cmd(pattern="restart$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="اعاده تشغيل$"))
+@bot.on(sudo_cmd(pattern="اعاده تشغيل$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "#RESTART \n" "Bot Restarted")
+        await event.client.send_message(
+            BOTLOG_CHATID, "#ريست \n" "□⋮ البوت في وضع اعادة التشغيل انتظر"
+        )
     await edit_or_reply(
         event,
-        "جـاري أعـادة التشـغيل ⌁",
+        "**اعادة التشغيل** ↫ استخدم `.ايدي` او `.بنك` للتحقق مما إذا كنت متصلاً بالإنترنت ، يستغرق الأمر في الواقع 1-2 دقيقة لإعادة التشغيل",
     )
     await bot.disconnect()
     execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on(admin_cmd(pattern="shutdown$"))
-@bot.on(sudo_cmd(pattern="shutdown$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="ايقاف$"))
+@bot.on(sudo_cmd(pattern="ايقاف$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     if BOTLOG:
-        await event.client.send_message(BOTLOG_CHATID, "#SHUTDOWN \n" "Bot shut down")
-    await edit_or_reply(event, "تـم أطفـاء الـبوت ⌁")
+        await event.client.send_message(
+            BOTLOG_CHATID, "#اطفاء \n" "البوت في وضع الاطفاء"
+        )
+    await edit_or_reply(
+        event, "**جارٍ إيقاف تشغيل البوت الآن ... شغِّلني يدويًا لاحقًا**"
+    )
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
         sys.exit(0)
-
-
-@bot.on(admin_cmd(pattern="sleep( [0-9]+)?$"))
-@bot.on(sudo_cmd(pattern="sleep( [0-9]+)?$", allow_sudo=True))
-async def _(event):
-    if event.fwd_from:
-        return
-    if " " not in event.pattern_match.group(1):
-        return await edit_or_reply(event, "Syntax: `.sleep time`")
-    counter = int(event.pattern_match.group(1))
-    if BOTLOG:
-        await event.client.send_message(
-            BOTLOG_CHATID,
-            "لقد وضعت الروبوت في وضع السكون لأجل " + str(counter) + " ثـواني",
-        )
-    event = await edit_or_reply(event, f"`تـم الايقاف المـوقت {counter} ثـواني`")
-    sleep(counter)
-    await event.edit("حسـنا الان تـم تشـغيلي ⌁")
 
 
 CMD_HELP.update(
