@@ -1,12 +1,12 @@
-# image search for @Jmthon
+# image search for catuserbot
 import os
 import shutil
 
 from ..helpers.google_image_download import googleimagesdownload
 
 
-@bot.on(admin_cmd(pattern=r"img(?: |$)(\d*)? ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"img(?: |$)(\d*)? ?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"صوره(?: |$)(\d*)? ?(.*)"))
+@bot.on(sudo_cmd(pattern=r"صوره(?: |$)(\d*)? ?(.*)", allow_sudo=True))
 async def img_sampler(event):
     if event.fwd_from:
         return
@@ -17,10 +17,8 @@ async def img_sampler(event):
     else:
         query = str(event.pattern_match.group(2))
     if not query:
-        return await edit_or_reply(
-            event, "قـم برد علـى الرسالة للبحـث ⌁"
-        )
-    cat = await edit_or_reply(event, "`جـاري البحـث عن الصـور ⌁..`")
+        return await edit_or_reply(event, "الرد على رسالة للبحث او ضعها مع الامر")
+    cat = await edit_or_reply(event, "جاري بحث عن صور")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
         if lim > 10:
@@ -41,7 +39,7 @@ async def img_sampler(event):
     try:
         paths = response.download(arguments)
     except Exception as e:
-        return await cat.edit(f"عذرا هنـالك خطـأ: \n`{e}`")
+        return await cat.edit(f"Error: \n`{e}`")
     lst = paths[0][query]
     await event.client.send_file(event.chat_id, lst, reply_to=reply_to_id)
     shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
