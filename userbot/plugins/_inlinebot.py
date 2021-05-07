@@ -19,13 +19,13 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        hmm = re.compile("secret (.*) (.*)")
+        hmm = re.compile("همسه (.*) (.*)")
         match = re.findall(hmm, query)
-        if query.startswith("**Jmthon Bot") and event.query.user_id == bot.uid:
+        if query.startswith("**Catuserbot") and event.query.user_id == bot.uid:
             buttons = [
                 (
                     custom.Button.inline("Stats", data="stats"),
-                    Button.url("Repo", "https://github.com/jasem-iq/jmthonbot"),
+                    Button.url("Repo", "https://github.com/sandy1709/catuserbot"),
                 )
             ]
             if CAT_IMG and CAT_IMG.endswith((".jpg", ".png")):
@@ -53,8 +53,8 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "© Userbot Help",
-                text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
+                "©جـمثون بوت",
+                text="{}\n**الإضافات المحملة حاليا**: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
             )
@@ -134,12 +134,10 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             timestamp = int(time.time() * 2)
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
 
-            buttons = [
-                custom.Button.inline("show message 🔐", data=f"secret_{timestamp}")
-            ]
+            buttons = [custom.Button.inline("اظهار الهمسه", data=f"secret_{timestamp}")]
             result = builder.article(
-                title="secret message",
-                text=f"🔒 A whisper message to {sandy}, Only he/she can open it.",
+                title="ارسال الهمسه",
+                text=f"هذه همسه سريه الى {sandy}, هوه فقط من يستطيع رؤيتها.",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -161,7 +159,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon"
+            reply_pop_up_alert = " قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -221,7 +219,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += (
-                "Use .unload {} to remove this plugin ©catuserbot".format(plugin_name)
+                "Use .unload {} to remove this plugin ©Jmthon".format(plugin_name)
             )
             try:
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
@@ -237,7 +235,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                         caption=plugin_name,
                     )
         else:
-            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon "
+            reply_pop_up_alert = " قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
@@ -293,11 +291,11 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "الـسابق", data="{}_prev({})".format(prefix, modulo_page)
+                    "رجوع", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline("اغـلاق", data="close"),
+                custom.Button.inline("اغلاق", data="close"),
                 custom.Button.inline(
-                    "الـتالي", data="{}_next({})".format(prefix, modulo_page)
+                    "التالي", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]
