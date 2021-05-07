@@ -35,8 +35,8 @@ async def filter_incoming_handler(handler):
         pass
 
 
-@bot.on(admin_cmd(pattern="safi (.*)"))
-@bot.on(sudo_cmd(pattern="safi (.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="اضف رد (.*)"))
+@bot.on(sudo_cmd(pattern="اضف رد (.*)", allow_sudo=True))
 async def add_new_filter(new_handler):
     if new_handler.fwd_from:
         return
@@ -78,8 +78,8 @@ async def add_new_filter(new_handler):
     await edit_or_reply(new_handler, f"⌁ خطـأ اثنـاء تعيـن الـرد {keyword}")
 
 
-@bot.on(admin_cmd(pattern="safis$"))
-@bot.on(sudo_cmd(pattern="safis$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="الردود$"))
+@bot.on(sudo_cmd(pattern="الردود$", allow_sudo=True))
 async def on_snip_list(event):
     if event.fwd_from:
         return
@@ -97,8 +97,8 @@ async def on_snip_list(event):
     )
 
 
-@bot.on(admin_cmd(pattern="rmsafi (.*)"))
-@bot.on(sudo_cmd(pattern="rmsafi (.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="حذف رد (.*)"))
+@bot.on(sudo_cmd(pattern="حذف رد (.*)", allow_sudo=True))
 async def remove_a_filter(r_handler):
     if r_handler.fwd_from:
         return
@@ -109,8 +109,8 @@ async def remove_a_filter(r_handler):
         await r_handler.edit("الـرد `{} `تـم حـذفة بنـجـاح ⌁".format(filt))
 
 
-@bot.on(admin_cmd(pattern="rmsafis$"))
-@bot.on(sudo_cmd(pattern="rmsafis$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="حذف الردود$"))
+@bot.on(sudo_cmd(pattern="حذف الردود$", allow_sudo=True))
 async def on_all_snip_delete(event):
     if event.fwd_from:
         return
