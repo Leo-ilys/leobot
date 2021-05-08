@@ -155,7 +155,7 @@ async def count(event):
     await event.edit(result)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"مسح"))
+@bot.on(admin_cmd(outgoing=True, pattern=r"حذف"))
 async def remove_profilepic(delpfp):
     """امر حذف الصور - لحذف صوره واحد من حسابك او جميعها"""
     group = delpfp.text[8:]
