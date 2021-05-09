@@ -26,7 +26,7 @@ autopic_path = os.path.join(os.getcwd(), "userbot", "original_pic.png")
 digitalpic_path = os.path.join(os.getcwd(), "userbot", "digital_pic.png")
 autophoto_path = os.path.join(os.getcwd(), "userbot", "photo_pfp.png")
 
-digitalpfp = Config.DIGITAL_PIC or "https://telegra.ph/file/686c46e34b1a5fa4ef467.jpg"
+digitalpfp = Config.DIGITAL_PIC or "https://telegra.ph/file/9552b77d21e182ccf535b.jpg"
 
 
 @bot.on(admin_cmd(pattern="autopic ?(.*)"))
@@ -62,29 +62,29 @@ async def autopic(event):
 
 
 
-@bot.on(admin_cmd(pattern="autoname$"))
+@bot.on(admin_cmd(pattern="اسم تلقائي$"))
 async def _(event):
     if event.fwd_from:
         return
-    if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
-        return await edit_delete(event, f"`الاسم التلقائي ممكّن بالفعل `")
-    addgvar("autoname", True)
-    await edit_delete(event, "` تـم بـدأ الاسـم التـلقائـي `")
+    if gvarstatus("اسم تلقائي") is not None and gvarstatus("اسم تلقائي") == "true":
+        return await edit_delete(event, f"**الاسم التلقائي ممكّن بالفعل ⌁**")
+    addgvar("اسم تلقائي", True)
+    await edit_delete(event, "**تـم بـدأ الاسـم التـلقائـي ⌁**")
     await autoname_loop()
 
 
-@bot.on(admin_cmd(pattern="autobio$"))
+@bot.on(admin_cmd(pattern="نبذة تلقائي$"))
 async def _(event):
     if event.fwd_from:
         return
-    if gvarstatus("autobio") is not None and gvarstatus("autobio") == "true":
-        return await edit_delete(event, f"`Autobio is already enabled`")
-    addgvar("autobio", True)
-    await edit_delete(event, "`Autobio has been started by my Master `")
+    if gvarstatus("نبذة تلقائي") is not None and gvarstatus("نبذة تلقائي") == "true":
+        return await edit_delete(event, f"** الـنبذة التلقائيه مفعـلة ⌁**")
+    addgvar("نبذة تلقائي", True)
+    await edit_delete(event, "")
     await autobio_loop()
 
 
-@bot.on(admin_cmd(pattern="end (.*)"))
+@bot.on(admin_cmd(pattern="انهاء (.*)"))
 async def _(event):  # sourcery no-metrics
     if event.fwd_from:
         return
@@ -123,17 +123,17 @@ async def _(event):  # sourcery no-metrics
                     return
             return await edit_delete(event, "`Bloom has been stopped now`")
         return await edit_delete(event, "`Bloom haven't enabled`")
-    if input_str == "autoname":
-        if gvarstatus("autoname") is not None and gvarstatus("autoname") == "true":
-            delgvar("autoname")
+    if input_str == "اسم تلقائي":
+        if gvarstatus("اسم تلقائي") is not None and gvarstatus("اسم تلقائي") == "true":
+            delgvar("اسم تلقائي")
             await event.client(
                 functions.account.UpdateProfileRequest(first_name=DEFAULTUSER)
             )
-            return await edit_delete(event, "`تم إيقاف الاسم التلقائي الآن`")
-        return await edit_delete(event, "`لم يتم تمكين الاسم التلقائي`")
-    if input_str == "autobio":
-        if gvarstatus("autobio") is not None and gvarstatus("autobio") == "true":
-            delgvar("autobio")
+            return await edit_delete(event, "**تم إيقاف الاسم التلقائي الآن ⌁**")
+        return await edit_delete(event, "**لم يتم تمكين الاسم التلقائي ⌁**")
+    if input_str == "نبذة تلقائي":
+        if gvarstatus("نبذة تلقائي") is not None and gvarstatus("نبذة تلقائي") == "true":
+            delgvar("نبذة تلقائي")
             await event.client(
                 functions.account.UpdateProfileRequest(about=DEFAULTUSERBIO)
             )
@@ -263,7 +263,7 @@ async def bloom_pfploop():
 
 
 async def autoname_loop():
-    AUTONAMESTART = gvarstatus("autoname") == "true"
+    AUTONAMESTART = gvarstatus("اسم تلقائي") == "true"
     while AUTONAMESTART:
         DM = time.strftime("%d-%m-%y")
         HM = time.strftime("%H:%M")
@@ -275,7 +275,7 @@ async def autoname_loop():
             LOGS.warning(str(ex))
             await asyncio.sleep(ex.seconds)
         await asyncio.sleep(CHANGE_TIME)
-        AUTONAMESTART = gvarstatus("autoname") == "true"
+        AUTONAMESTART = gvarstatus("اسم تلقائي") == "true"
 
 
 async def autobio_loop():
