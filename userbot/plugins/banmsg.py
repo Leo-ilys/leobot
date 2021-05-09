@@ -72,7 +72,7 @@ async def on_view_blacklist(event):
         for trigger in all_blacklisted:
             OUT_STR += f"👉 {trigger} \n"
     else:
-        OUT_STR = "لاتـوجد قـائمة سـوداء حاليـا لأضـافه كلـمه الى القائمه استعمل أمر  `.addblacklist`"
+        OUT_STR = "لاتـوجد قـائمة سـوداء حاليـا لأضـافه كلـمه الى القائمه استعمل أمر  `.منع`"
     if len(OUT_STR) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "blacklist.text"
