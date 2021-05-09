@@ -8,8 +8,8 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from . import BOTLOG, BOTLOG_CHATID
 
 
-@bot.on(admin_cmd(pattern="spam (.*)"))
-@bot.on(sudo_cmd(pattern="spam (.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="تكرار (.*)"))
+@bot.on(sudo_cmd(pattern="تكرار (.*)", allow_sudo=True))
 async def spammer(event):
     if event.fwd_from:
         return
