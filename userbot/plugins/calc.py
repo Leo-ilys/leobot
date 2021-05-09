@@ -4,8 +4,8 @@ import sys
 import traceback
 
 
-@bot.on(admin_cmd(pattern="calc (.*)"))
-@bot.on(sudo_cmd(pattern="calc (.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="حساب (.*)"))
+@bot.on(sudo_cmd(pattern="حساب (.*)", allow_sudo=True))
 async def _(car):
     cmd = car.text.split(" ", maxsplit=1)[1]
     event = await edit_or_reply(car, "جـاري الحسـاب ...")
