@@ -14,8 +14,8 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from .sql_helper.echo_sql import addecho, get_all_echos, is_echo, remove_echo
 
 
-@bot.on(admin_cmd(pattern="addecho$"))
-@bot.on(sudo_cmd(pattern="addecho$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="تقليد$"))
+@bot.on(sudo_cmd(pattern="تقليد$", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -38,8 +38,8 @@ async def echo(cat):
         await edit_or_reply(cat, " الرد على الشخص الذي تـريد ازعاجه")
 
 
-@bot.on(admin_cmd(pattern="rmecho$"))
-@bot.on(sudo_cmd(pattern="rmecho$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="الغاء التقليد$"))
+@bot.on(sudo_cmd(pattern="الغاء التقليد$", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -62,8 +62,8 @@ async def echo(cat):
         await edit_or_reply(cat, " الرد علـى الشخص رجـاء")
 
 
-@bot.on(admin_cmd(pattern="listecho$"))
-@bot.on(sudo_cmd(pattern="listecho$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="المقلدهم$"))
+@bot.on(sudo_cmd(pattern="المقلدهم$", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
