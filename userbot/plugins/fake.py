@@ -10,21 +10,21 @@ from . import ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
-@bot.on(admin_cmd(pattern="scam(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="scam(?: |$)(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="وهمي(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="وهمي(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     options = [
-        "typing",
+        "كتابة",
         "contact",
         "game",
-        "location",
-        "voice",
+        "موقع",
+        "صوتي",
         "round",
-        "video",
-        "photo",
-        "document",
+        "فيديو",
+        "صورة",
+        "ملف",
     ]
     input_str = event.pattern_match.group(1)
     args = input_str.split()
