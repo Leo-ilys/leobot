@@ -71,8 +71,8 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern=r"savepwel ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"savepwel ?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern=r"ترحيب خاص ?(.*)"))
+@bot.on(sudo_cmd(pattern=r"ترحيب خاص ?(.*)", allow_sudo=True))
 async def save_welcome(event):
     if event.fwd_from:
         return
@@ -100,7 +100,7 @@ async def save_welcome(event):
     elif event.reply_to_msg_id and not string:
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
-    success = "`Welcome note {} for this chat.`"
+    success = "**تـم حفظ الـترحيب"
     if addwelcome_setting(event.chat_id, 0, string, msg_id) is True:
         return await edit_or_reply(event, success.format("saved"))
     rmwelcome_setting(event.chat_id)
@@ -109,25 +109,25 @@ async def save_welcome(event):
     await edit_or_reply("Error while setting welcome in this group")
 
 
-@bot.on(admin_cmd(pattern="clearpwel$"))
-@bot.on(sudo_cmd(pattern="clearpwel$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="حذف خاص$"))
+@bot.on(sudo_cmd(pattern="حذف خاص$", allow_sudo=True))
 async def del_welcome(event):
     if event.fwd_from:
         return
     if rmwelcome_setting(event.chat_id) is True:
-        await edit_or_reply(event, "`Welcome note deleted for this chat.`")
+        await edit_or_reply(event, "`**تـم حذف الـترحيب**`")
     else:
         await edit_or_reply(event, "`Do I have a welcome note here ?`")
 
 
-@bot.on(admin_cmd(pattern="listpwel$"))
-@bot.on(sudo_cmd(pattern="listpwel$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="قائمه ترحيب الخاص$"))
+@bot.on(sudo_cmd(pattern="قائمه ترحيب الخاص$", allow_sudo=True))
 async def show_welcome(event):
     if event.fwd_from:
         return
     cws = getcurrent_welcome_settings(event.chat_id)
     if not cws:
-        await edit_or_reply(event, "`No pwelcome message saved here.`")
+        await edit_or_reply(event, "** لـم يتم اضافه اي ترحيب**")
         return
     if cws.f_mesg_id:
         msg_o = await bot.get_messages(entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id))
