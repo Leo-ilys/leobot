@@ -26,8 +26,8 @@ async def on_new_message(event):
             break
 
 
-@bot.on(admin_cmd(pattern="banmsg ((.|\n)*)"))
-@bot.on(sudo_cmd(pattern="banmsg ((.|\n)*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="منع ((.|\n)*)"))
+@bot.on(sudo_cmd(pattern="منع ((.|\n)*)", allow_sudo=True))
 async def on_add_black_list(event):
     text = event.pattern_match.group(1)
     to_blacklist = list(
@@ -44,8 +44,8 @@ async def on_add_black_list(event):
     )
 
 
-@bot.on(admin_cmd(pattern="rmbanmsg ((.|\n)*)"))
-@bot.on(sudo_cmd(pattern="rmbanmsg ((.|\n)*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="الغاء منع ((.|\n)*)"))
+@bot.on(sudo_cmd(pattern="الغاء منع ((.|\n)*)", allow_sudo=True))
 async def on_delete_blacklist(event):
     text = event.pattern_match.group(1)
     to_unblacklist = list(
@@ -63,8 +63,8 @@ async def on_delete_blacklist(event):
     )
 
 
-@bot.on(admin_cmd(pattern="listbanmsg$"))
-@bot.on(sudo_cmd(pattern="listbanmsg$", allow_sudo=True))
+@bot.on(admin_cmd(pattern="الممنوعات$"))
+@bot.on(sudo_cmd(pattern="الممنوعات$", allow_sudo=True))
 async def on_view_blacklist(event):
     all_blacklisted = sql.get_chat_blacklist(event.chat_id)
     OUT_STR = "القوائم السوداء في الدردشة الحالية:\n"
