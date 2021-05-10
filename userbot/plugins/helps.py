@@ -504,7 +504,30 @@ async def _(event):
             
             #Jmthon 
             
+import random
 
+from telethon import events
+
+
+@bot.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+async def _(event):
+    if event.fwd_from:
+        return
+    input_str = event.pattern_match.group(1)
+    if input_str == "م20":
+        r = random.randint(0, 3)
+        logger.debug(r)
+        if r == 0:
+            await event.edit(
+                "الأوامر رقم 20\n— — — — — — — — —\n\n⌔ قائمه اوامر القائمه السوداء :\n⌁ .منع + الكلمه   | لمنع ارسال هذع الكلمه\n⌁ .الغاء منع   | للسماح بهذه الكلمه \n⌁ .الممنوعات  لأظهار قائمه الكلمات المحظوره\n— — — — — —— — — — —\n[⌔︙Ch Source](https://t.me/Jmthon)"
+            )
+        else:
+            await event.edit(
+                "الأوامر رقم 20\n— — — — — — — — —\n\n⌔ قائمه اوامر القائمه السوداء :\n⌁ .منع + الكلمه   | لمنع ارسال هذع الكلمه\n⌁ .الغاء منع   | للسماح بهذه الكلمه \n⌁ .الممنوعات  لأظهار قائمه الكلمات المحظوره\n— — — — — —— — — — —\n[⌔︙Ch Source](https://t.me/Jmthon)"
+            )
+            
+            
+           #Jmthon
 import random
 
 from telethon import events
