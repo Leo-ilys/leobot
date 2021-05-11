@@ -5,9 +5,9 @@ from telethon import version
 
 from . import ALIVE_NAME, StartTime, catversion, get_readable_time, mention, reply_id
 
-DEFAULTUSER = ALIVE_NAME or "𝗝𝗠𝗧𝗛𝗢𝗡♡⁩"
-CAT_IMG = Config.ALIVE_PIC or "https://telegra.ph/file/8c85ff635e3736629c3c2.jpg"
-CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "⇝ 𝗪َ𝗘𝗟َِ𝗖𝗢𝗠َِ𝙀َِ 𝗧𝗢 𝗝𝗠𝗧𝗛𝗢𝗡 𝄵 ⇜"
+DEFAULTUSER = ALIVE_NAME or "𝐋𝐄𝐎𝐁𝐎𝐓⁩"
+CAT_IMG = Config.ALIVE_PIC or "https://t.me/LEO_DZN/152"
+CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "⇝ 𝐖𝐄𝐋َِ𝐂𝐎𝐌َِ𝐄 𝐓𝐎 𝐋𝐄𝐎 𝄵 ⇜"
 EMOJI = Config.CUSTOM_ALIVE_EMOJI or "-"
 
 
@@ -27,7 +27,7 @@ async def amireallyalive(alive):
         cat_caption += f"**{EMOJI} نسخـۿ البايثون :** `{python_version()}\n`"
         cat_caption += f"**{EMOJI} الوقت :** `{uptime}\n`"
         cat_caption += f"**{EMOJI} المنشئ:** {mention}\n"
-        cat_caption += f"**{EMOJI}**  **[𝗦𝗼𝘂𝗿𝗰𝗲 𝗖𝗵𝗮𝗻𝗻𝗲𝗹]**(t.me/jmthon)   .\n"
+        cat_caption += f"**{EMOJI}**  **[𝗦𝗼𝘂𝗿𝗰𝗲 𝗖𝗵𝗮𝗻𝗻𝗲𝗹]**(t.me/qhr_1)   .\n"
         await alive.client.send_file(
             alive.chat_id, CAT_IMG, caption=cat_caption, reply_to=reply_to_id
         )
