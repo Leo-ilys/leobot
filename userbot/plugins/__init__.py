@@ -47,10 +47,10 @@ TOSH = (
 R = (
     "✘ 𝘼𝙍𝘼𝘽𝙄𝘾 𝘾𝘼𝙏 - 𝙍𝙀𝙋𝙊 𓆪 \n"
     "𓍹ⵧⵧⵧⵧⵧⵧⵧⵧᵗᵉˡᵉᵗʰᵒᶰ ᵃʳᵃᵇˢ⁦⁦ⵧⵧⵧⵧⵧⵧⵧⵧ𓍻\n"
-    "- Jmthon source - 𝖽𝖾𝗏 Ξ [𝖼𝗅𝗂𝖼𝗄 𝗁𝖾𝗋𝖾 𝅘𝅥𝅮](t.me/JMTHON) ✘ \n"
-    "- 𝗌𝗈𝗎𝗋𝖼𝖾 Jmthon Ξ [𝖼𝗅𝗂𝖼𝗄 𝗁𝖾𝗋𝖾 𝅘𝅥𝅮](https://github.com/jasem-iq/jmthonbot) ✘"
+    "- Leo source - 𝖽𝖾𝗏 Ξ [𝖼𝗅𝗂𝖼𝗄 𝗁𝖾𝗋𝖾 𝅘𝅥𝅮](t.me/QHR_1) ✘ \n"
+    "- 𝗌𝗈𝗎𝗋𝖼𝖾 Leo Ξ [𝖼𝗅𝗂𝖼𝗄 𝗁𝖾𝗋𝖾 𝅘𝅥𝅮](https://github.com/Leo-ilys/Leobot) ✘"
 )
-K = "https://github.com/jasem-iq/jmthonbot"
+K = "https://github.com/Leo-ilys/Leobot"
 
 
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
