@@ -16,7 +16,7 @@ from telethon.tl import functions
 from . import AUTONAME, BOTLOG, BOTLOG_CHATID, DEFAULT_BIO
 from .sql_helper.globals import addgvar, delgvar, gvarstatus
 
-DEFAULTUSERBIO = DEFAULT_BIO or " 𝘞𝘌𝘓𝘊𝘖𝘔𝘌 𝘛𝘖 𝘑𝘔𝘛𝘏𝘖𝘕 𝘚𝘖𝘜𝘙𝘊𝘌  "
+DEFAULTUSERBIO = DEFAULT_BIO or " 𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐓𝐎 𝐋𝐄𝐎 𝐒𝐎𝐔𝐑𝐂𝐄  "
 CHANGE_TIME = Config.CHANGE_TIME
 DEFAULTUSER = AUTONAME or Config.ALIVE_NAME
 
