@@ -53,7 +53,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "©جـمثون بوت",
+                "©لـيـو بـوت",
                 text="{}\n**الإضافات المحملة حاليا**: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
@@ -159,7 +159,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = " قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon"
+            reply_pop_up_alert = " قـم بالـحصول عـلى بـوت لـيـو مـن هـنا @QHR_1"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -176,7 +176,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon "
+            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت لـيـو مـن هـنا @QHR_1 "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"secret_(.*)")))
@@ -219,7 +219,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += (
-                "Use .unload {} to remove this plugin ©Jmthon".format(plugin_name)
+                "Use .unload {} to remove this plugin ©QHR_1".format(plugin_name)
             )
             try:
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
@@ -235,7 +235,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
                         caption=plugin_name,
                     )
         else:
-            reply_pop_up_alert = " قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon "
+            reply_pop_up_alert = " قـم بالـحصول عـلى بـوت لـيـو مـن هـنا @QHR_1 "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
@@ -243,7 +243,7 @@ if Config.TG_BOT_USERNAME is not None and tgbot is not None:
         if event.query.user_id == bot.uid:
             await event.edit("menu closed")
         else:
-            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت جـمثون مـن هـنا @Jmthon"
+            reply_pop_up_alert = "قـم بالـحصول عـلى بـوت لـيـو مـن هـنا @QHR_1"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"stats")))
