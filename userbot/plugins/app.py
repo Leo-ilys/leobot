@@ -1,7 +1,7 @@
 """Fetch App Details from Playstore.
 .app <app_name> to fetch app details.
 .appr <app_name>  to fetch app details with Xpl0iter request link.
-  © [RRRD7](Jmthon)"""
+  © [QHR_1](Leo)"""
 
 import bs4
 import requests
@@ -143,8 +143,8 @@ async def apkr(event):
             + app_link
             + "'>View in Play Store</a>"
         )
-        app_details += "\n\n<b>Download : </b> <a href='https://t.me/joinchat/JCu-H1NikiYDgNjpjPYd4A'>Request_Here</a>"
-        app_details += "\n\n===> @Jmthon <==="
+        app_details += "\n\n<b>Download : </b> <a href='https://t.me/QHR_1'>Request_Here</a>"
+        app_details += "\n\n===> @QHR_1 <==="
         await event.edit(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await event.edit("لم يتم الحصول على التطبيق او ان المعلومات خطا")
