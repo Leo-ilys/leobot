@@ -1,6 +1,6 @@
 """
-Created by @Jmthon
-Userbot plugin fot Jmthon bot
+Created by @Qhr_1
+Userbot plugin fot Leo bot
 """
 
 
