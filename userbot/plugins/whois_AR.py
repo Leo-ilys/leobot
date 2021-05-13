@@ -107,15 +107,15 @@ async def fetch_info(replied_user, event):
     last_name = last_name.replace("\u2060", "") if last_name else (" ")
     username = "@{}".format(username) if username else ("لايوجد معرف")
     user_bio = "لاتوجد نبذه" if not user_bio else user_bio
-    caption = "<b><i> 𓆩JMTHON SOURCE 𓆪 </i></b>\n"
-    caption += f"<b> • 🇮🇶 | الأسم ↬</b> {first_name} {last_name}\n"
-    caption += f"<b> • 🇮🇶 | الـمعرف ↬</b> {username}\n"
-    caption += f"<b> • 🇮🇶 | الايدي ↬</b> <code>{user_id}</code>\n"
-    caption += f"<b> • 🇮🇶 | عـدد الصور ↬</b> {replied_user_profile_photos_count}\n"
-    caption += f"<b> • 🇮🇶 | النبـذة ↬ </b> {user_bio} \n"
-    caption += f"<b> • 🇮🇶 | حـسابه ↬</b> \n"
+    caption = "<b><i> 𓆩LEO SOURCE 𓆪 </i></b>\n"
+    caption += f"<b> • 🇲🇦 | الأسم ↬</b> {first_name} {last_name}\n"
+    caption += f"<b> • 🇲🇦 | الـمعرف ↬</b> {username}\n"
+    caption += f"<b> • 🇲🇦 | الايدي ↬</b> <code>{user_id}</code>\n"
+    caption += f"<b> • 🇲🇦 | عـدد الصور ↬</b> {replied_user_profile_photos_count}\n"
+    caption += f"<b> • 🇲🇦 | النبـذة ↬ </b> {user_bio} \n"
+    caption += f"<b> • 🇲🇦 | حـسابه ↬</b> \n"
     caption += f'<a href="tg://user?id={user_id}">{first_name}</a> \n'
-    caption += f"<b> 𓆩 Jmthon Source</b> - @JMTHON 𓆪 "
+    caption += f"<b> 𓆩 LEO SOURCE</b> - @QHR_1 𓆪 "
     return photo, caption
 
 
