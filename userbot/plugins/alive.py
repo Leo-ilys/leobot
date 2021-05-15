@@ -5,7 +5,7 @@ from telethon import version
 
 from . import ALIVE_NAME, StartTime, catversion, get_readable_time, mention, reply_id
 
-DEFAULTUSER = ALIVE_NAME or "𝐋𝐄𝐎𝐁𝐎𝐓⁩"
+DEFAULTUSER = ALIVE_NAME or "𝐋𝐄𝐎𝐓𝐇𝐎𝐍⁩"
 CAT_IMG = Config.ALIVE_PIC or "https://telegra.ph/file/f268e0439e5084706deda.jpg"
 CUSTOM_ALIVE_TEXT = Config.CUSTOM_ALIVE_TEXT or "⇝ 𝐖𝐄𝐋َِ𝐂𝐎𝐌َِ𝐄 𝐓𝐎 𝐋𝐄𝐎 𝄵 ⇜"
 EMOJI = Config.CUSTOM_ALIVE_EMOJI or "-"
